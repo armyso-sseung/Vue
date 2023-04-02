@@ -9,7 +9,7 @@
         <v-col cols="6" class="pr-9">
           <v-card-title class="pl-0"><h2>{{ product.name }}</h2></v-card-title>
           <v-card-text class="pl-0">{{ `$ ${ product.price }` }}</v-card-text>
-          <v-btn width="100%" color="primary">Product to Cart</v-btn>
+          <v-btn width="100%" color="primary" @click="handleClickCart">Product to Cart</v-btn>
         </v-col>
       </v-row>
     </v-card>
@@ -19,6 +19,7 @@
 <script>
   import baseLayout from "~/layouts/baseLayout.vue";
   import {getProduct} from "~/apis/product/productApi";
+  import {insertCart} from "~/apis/cart/cartApi";
 
 
   export default {
@@ -32,7 +33,11 @@
     },
 
     methods: {
-      
+      async handleClickCart() {
+        await insertCart( this.product )
+        this.$store.commit('insertCart', this.product )
+        this.$router.push('/cart')
+      },
     }
   }
 </script>
