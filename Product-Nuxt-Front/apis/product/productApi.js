@@ -13,3 +13,9 @@ export const getProductList = async () => {
 export const getProduct = async ( id ) => {
   return await product.get(`/${ id }`)
 }
+
+export const getProductSearch = async ( keyword ) => {
+  return await product.get(``, {
+    params: { name_like: keyword }
+  })
+}

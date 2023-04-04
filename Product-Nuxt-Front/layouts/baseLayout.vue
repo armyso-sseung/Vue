@@ -8,8 +8,10 @@
         <v-btn v-for="menu in menuList" :key="menu.title" :to="menu.path" class="mt-5 mb-15" text>{{ menu.title }}</v-btn>
         <slot />
       </v-container>
-      <div v-if="$route.name == 'product'" class="cart-wrapper">
-        <v-btn :to="{ path: '/cart' }">cart</v-btn>
+      <div v-if="$route.name == 'product'" class="cart-wrapper" @click="handleClickCart">
+        <v-avatar color="grey">
+          <v-icon>mdi-cart</v-icon>
+        </v-avatar>
       </div>
     </div>
   </v-app>
@@ -29,7 +31,11 @@
     methods: {
       handleClickLogo() {
         this.$router.push('/')
-      }
+      },
+
+      handleClickCart() {
+        this.$router.push('/cart')
+      },
     }
   }
 </script>
@@ -49,5 +55,6 @@
     float: right;
     bottom: 2em;
     right: 2em;
+    cursor: pointer;
   }
 </style>

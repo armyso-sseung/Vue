@@ -3,13 +3,13 @@
     <v-card>
       <v-row>
         <v-col cols="6" class="pl-6">
-          <v-img :src="product.imageUrl" :alt="product.name" />
+          <v-img :src="product.imageUrl" :alt="product.name" height="100%" cover />
         </v-col>
 
         <v-col cols="6" class="pr-9">
-          <v-card-title class="pl-0"><h2>{{ product.name }}</h2></v-card-title>
+          <v-card-title class="pl-0">{{ product.name }}</v-card-title>
           <v-card-text class="pl-0">{{ `$ ${ product.price }` }}</v-card-text>
-          <v-btn width="100%" color="primary" @click="handleClickCart">Product to Cart</v-btn>
+          <v-btn color="primary" width="100%" @click="handleClickCart">Product to Cart</v-btn>
         </v-col>
       </v-row>
     </v-card>
@@ -43,5 +43,4 @@
 </script>
 
 <style scoped>
-
 </style>
