@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .display1 {
+    @apply text-4xl pc:text-5xl; /* 36px, 48px*/
+  }
+  .heading1 {
+    @apply text-3xl pc:text-4xl; /* 30px, 36px*/
+  }
+  .heading2 {
+    @apply text-2xl pc:text-3xl; /* 24px, 30px*/
+  }
+  .subtitle1 {
+    @apply text-xl pc:text-2xl; /* 20px, 24px*/
+  }
+  .subtitle2 {
+    @apply text-base; /* 16px */
+  }
+  .body1 {
+    @apply text-sm; /* 14px */
+  }
+  .body2 {
+    @apply text-xs; /* 12px */
+  }
+  .caption1 {
+    @apply text-xs; /* 12px */
+  }
+
+  /* 2줄 처리 */
+  .ellipsis-2 {
+    @apply block whitespace-normal text-ellipsis line-clamp-2 ;
+    display: -webkit-box;
+  }
+  .text-overflow {
+    @apply line-clamp-2 text-ellipsis break-words;
+  }
+
+  /* 1줄 처리 */
+  .text-overflow01 {
+    @apply whitespace-nowrap text-ellipsis overflow-hidden;
+  }
+}

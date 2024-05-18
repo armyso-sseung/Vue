@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 약관 */
+@layer components {
+	.terms-tit + .terms-head {
+		@apply mt-3
+	}
+}

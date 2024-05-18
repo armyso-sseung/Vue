@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .groupbox.box-gray {
+    @apply bg-gray2 p-4;
+  }
+
+  .groupbox.border {
+    @apply p-4 border-solid border-gray4;
+  }
+
+  .groupbox.box-gray:not([class*='mb-']),
+  .groupbox.border:not([class*='mb-']) {
+    @apply mb-5;
+  }
+  .groupbox.no-border:not([class*='mb-']) {
+    @apply mb-3;
+  }
+}

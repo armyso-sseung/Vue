@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  /* accordion */
+  .cont-accordion .item:only-child .btn-tit {
+    @apply border-none;
+  }
+  .cont-accordion .btn-tit {
+    @apply relative border-b border-gray4;
+  }
+  .cont-accordion .btn-tit::after {
+    @apply content-[''] absolute right-5 pc:right-4 inset-y-2/4 size-3 -translate-y-2/4 bg-[url('~/public/images/icons/ico_arrow12.svg')] bg-center transition-all duration-200;
+  }
+  .cont-accordion [data-state='open'] .btn-tit {
+    @apply border-none;
+  }
+  .cont-accordion [data-state='open'] .btn-tit::after {
+    @apply rotate-180;
+  }
+
+  /* filter (accordion) */
+  .cont-accordion .item:only-child .btn-filter-tit {
+    @apply border-none;
+  }
+  .cont-accordion .btn-filter-tit {
+    @apply relative border-b border-gray4 font-bold text-sm;
+  }
+  .cont-accordion .btn-filter-tit::after {
+    @apply content-[''] absolute right-4 inset-y-2/4 size-5 -translate-y-2/4 bg-[url('~/public/images/icons/ico_updown20.svg')] bg-center transition-all duration-200;
+  }
+  .cont-accordion [data-state='open'] .btn-filter-tit::after {
+    @apply rotate-180;
+  }
+
+  /* 주문/결제 (accordion) */
+  .cont-accordion .btn-pay-tit {
+    @apply relative border-t border-gray4 font-bold text-sm mo:px-0;
+  }
+  .cont-accordion .btn-pay-tit::after {
+    @apply content-[''] absolute right-0 inset-y-2/4 size-5 -translate-y-2/4 bg-[url('~/public/images/icons/ico_updown20.svg')] bg-center transition-all duration-200;
+  }
+  .cont-accordion [data-state='open'] .btn-pay-tit::after {
+    @apply rotate-180;
+  }
+
+  /* accordion arrow button size 20px 일 때  */
+  .cont-accordion .btn-tit20 {
+    @apply relative border-b border-gray4 pr-11;
+  }
+  .cont-accordion .btn-tit20::after {
+    @apply content-[''] absolute right-0 top-1/2 size-5 -translate-y-2/4 bg-[url('~/public/images/icons/ico_updown20.svg')] bg-center transition-all duration-200;
+  }
+  .cont-accordion [data-state='open'] .btn-tit20::after {
+    @apply rotate-180;
+  }
+  .cont-accordion [data-state='open'] .btn-tit20 p {
+    @apply font-bold;
+  }
+  .cont-accordion .type-lock {
+    @apply pointer-events-none;
+  }
+  .cont-accordion .type-lock::after {
+    @apply hidden;
+  }
+  .cont-accordion .type-lock .tit span {
+    @apply flex items-center;
+  }
+  .cont-accordion .type-lock .tit span::after {
+    @apply content-[''] inline-flex size-4 ml-1 bg-[url('~/public/images/icons/ico_lock.svg')];
+  }
+
+  /* 주문취소, 환불 안내 등  안내정보 출력 아코디언  */
+  .info-accordion {
+    @apply border-t border-gray3;
+  }
+
+  .info-accordion .info-tit {
+    @apply relative text-sm border-b border-gray3 px-0 h-11;
+  }
+
+  .info-accordion .info-tit::after {
+    @apply content-[''] absolute right-0 top-1/2 -translate-y-2/4 size-4 bg-[url('~/public/images/icons/ico_arrow16.svg')] bg-center transition-all duration-200;
+  }
+
+  .info-accordion [data-state='open'] .info-tit::after {
+    @apply rotate-180;
+  }
+
+  .info-accordion .info-content {
+    @apply px-0 border-b border-gray3 bg-white;
+  }
+
+  /* 이벤트(설문) 아코디언미사용 case  */
+  .info-noaccordion {
+    @apply border-t border-gray3;
+  }
+
+  .info-noaccordion .info-tit {
+    @apply relative text-sm border-b border-gray3 px-0 h-11 leading-[2.75rem];
+  }
+
+  .info-noaccordion .info-content {
+    @apply px-0 py-6 text-xs border-b border-gray3 bg-white;
+  }
+}

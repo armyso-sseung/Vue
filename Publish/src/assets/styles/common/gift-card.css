@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .gift-card {
+    @apply mb-5;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.15);
+  }
+
+  .gift-img-container {
+    @apply w-full h-[149px] bg-center text-transparent text-[0];
+    background-size:auto 100%;
+  }
+
+  .gift-txt-container {
+    @apply p-4
+  }
+}

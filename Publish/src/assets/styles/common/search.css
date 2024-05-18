@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .swiper-recent-item .swiper-wrapper {
+    @apply inline-flex space-x-1 pl-5
+  }
+}

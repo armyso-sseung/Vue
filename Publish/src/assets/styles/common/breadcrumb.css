@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .ant-breadcrumb.nav-custom {
+    @apply text-xs items-center mb-5;
+  }
+
+  .ant-breadcrumb.nav-custom ol {
+    @apply items-center flex;
+  }
+
+  .ant-breadcrumb.nav-custom ol li a {
+    @apply h-4 flex items-center;
+  }
+  .ant-breadcrumb.nav-custom .ant-breadcrumb-separator {
+    @apply mx-1;
+  }
+}

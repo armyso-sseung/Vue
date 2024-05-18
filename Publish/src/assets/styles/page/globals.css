@@ -1,0 +1,125 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/*@tailwind base;*/
+/*@tailwind components;*/
+/*@tailwind utilities;*/
+
+/* Import CSS */
+@import url('../common/accordion.css');
+@import url('../common/button.css');
+@import url('../common/datepicker.css');
+@import url('../common/dialog.css');
+@import url('../common/modal.css');
+@import url('../common/form.css');
+@import url('../common/layout.css');
+@import url('../common/table.css');
+@import url('../common/terms.css');
+@import url('../common/text.css');
+@import url('../common/tab.css');
+@import url('../common/slider.css');
+@import url('../common/drawer.css');
+/* @import url('../common/range.css'); */
+/* @import url('../common/contents-title.css'); */
+@import url('../common/search.css');
+@import url('../common/breadcrumb.css');
+@import url('../common/select.css');
+@import url('../common/unit.css');
+@import url('../common/coupon.css');
+@import url('../common/img-detail.css');
+/* @import url('../common/progress.css'); */
+/* @import url('../common/steps.css'); */
+
+/* 레이아웃
+	Z-INDEX 범위
+		- skip : 500
+		- hedaer : 501 ~ 600
+		- contents : 401 ~ 500
+		- actionbar : 600
+		- footer : 601 ~ 700
+		- top : 800
+		- dim : 1000
+		- loading: 1001
+		- layer : 1001
+		- floating : 500
+*/
+
+@layer base {
+  html {
+    height: 100%;
+    @apply text-black;
+  }
+  html[lang='ko'] {
+    @apply font-default;
+  }
+  /* 스크롤바 생성시 웹페이지 위치 이동 방지 100vw - 스크롤바넓이 */
+  body {
+    height: 100%;
+    @apply pc:w-[calc(100vw-13px)]
+  }
+
+  /* Nuxt Div 스타일 */
+  #__nuxt {
+    height: 100%
+  }
+  
+  /* tailwind reset css가 완벽하지 않아서 추가해야함 */
+  input {
+    @apply appearance-none outline-none focus:outline-none;
+    -webkit-appearance: none;
+    -webkit-border-radius: 0;
+  }
+
+  /* number type: spin 버튼 제거 */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    @apply appearance-none;
+  }
+
+  em {
+    @apply not-italic;
+  }
+  table caption {
+    @apply size-0 text-transparent invisible opacity-0 overflow-hidden;
+  }
+
+  b,
+  strong {
+    @apply font-bold;
+  }
+
+  @screen pc {
+    /* body scrollbar setting */
+    *::-webkit-scrollbar {
+      width: 13px;
+    }
+
+    *::-webkit-scrollbar-thumb {
+      background: #000;
+      background-clip: padding-box;
+      border: 5px solid transparent;
+      box-shadow: 0px 0px 0px 1px rgba(255 255 255 0.1) inset;
+      -webkit-box-shadow: 0px 0px 0px 1px rgba(255 255 255 0.1) inset;
+      -moz-box-shadow: 0px 0px 0px 1px rgba(255 255 255 0.1) inset;
+    }
+
+    *::-webkit-scrollbar-thumb:hover {
+      background: #000;
+      background-clip: padding-box;
+      border: 5px solid transparent;
+    }
+
+    *::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    *::-webkit-scrollbar-corner {
+      display: none;
+    }
+  }
+}
+
+.ant-notification-notice-message {
+  @apply !mb-0
+}

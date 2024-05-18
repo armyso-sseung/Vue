@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 자주묻는 질문 */
+@layer utilities {
+  .acco-question .acco-tit .text {
+    @apply w-full overflow-hidden text-ellipsis whitespace-nowrap;
+  }
+  .acco-question .acco-tit[data-state="open"] .text {	
+    @apply overflow-visible whitespace-pre-wrap break-all;
+    text-overflow: inherit;
+  }
+}
