@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .btn-coupon {
+    @apply flex w-full border border-black text-left items-stretch;
+  }
+
+  .btn-coupon .txt-area {
+    @apply p-3 flex-auto self-center;
+  }
+
+  .btn-coupon .txt-area .txt-benefit {
+    @apply font-bold text-2xl;
+  }
+
+  .btn-coupon .txt-area .txt-name {
+    @apply mt-1 font-bold text-sm;
+  }
+
+  .btn-coupon .txt-area .txt-date {
+    @apply text-xs;
+  }
+
+  .btn-coupon .txt-area .txt-date + .txt-desc:not(:empty) {
+    @apply mt-4;
+  }
+
+  .btn-coupon .txt-area .txt-desc {
+    @apply text-xs text-gray7;
+  }
+
+  .btn-coupon .txt-area .btn-flags:not(:empty) {
+    @apply mt-1 flex gap-1;
+  }
+
+  /* 쿠폰 상태 영역 공통 */
+  .btn-coupon .btn-status {
+    @apply w-[76px] flex flex-col items-center justify-center text-xs border-l border-gray5 border-dashed flex-none;
+  }
+
+  .btn-coupon .btn-status::before {
+    @apply content-[''] block;
+  }
+
+  /* 케이스: 기본값(버튼영역 없음) */
+  .btn-coupon.status-normal .btn-status {
+    @apply hidden;
+  }
+
+  /* 케이스: 쿠폰받기 */
+  .btn-coupon.status-down-ready .btn-status::before {
+    @apply size-6 bg-[url('/images/icons/ico_coupon_down.svg')];
+  }
+
+  /* 케이스: 받기완료 */
+  .btn-coupon.status-received .btn-status::before {
+    @apply size-5 bg-[url('/images/icons/ico_check20.svg')];
+  }
+
+  /* 케이스: 사용완료 */
+  .btn-coupon.status-completed {
+    @apply content-[''] border-gray5 text-gray5 relative;
+  }
+
+  .btn-coupon.status-completed .txt-desc {
+    @apply text-gray5;
+  }
+
+  .btn-coupon.status-completed .btn-flags > span {
+    @apply text-gray5 border-gray4;
+  }
+
+  .btn-coupon.status-completed .btn-status {
+    @apply w-auto h-6 absolute text-xs border-none right-0 top-0 bg-gray4 px-2 text-gray6;
+  }
+
+  .btn-coupon.status-completed .btn-status::before {
+    @apply content-[''];
+  }
+}

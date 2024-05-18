@@ -1,0 +1,191 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 공통 - 영역별 간격 지정 */
+@layer components {
+  .content-section {
+    @apply mb-10;
+    min-height: 40px;
+  }
+}
+
+/* 마이페이지 - 등급혜택 */
+@layer components {
+  .my-grade {
+    @apply pc:flex pc:justify-between pc:relative;
+  }
+
+  .my-grade .grade-group {
+    @apply flex gap-6 flex-wrap pc:gap-y-1 mb-5 pc:mb-0;
+  }
+
+  .my-grade .grade-group .img-box {
+    @apply gap-1 pc:gap-3 items-center inline-flex flex-col flex-none;
+  }
+
+  .my-grade .grade-group .txt-box {
+    @apply flex-auto text-2xl;
+  }
+
+  .my-grade .grade-group .txt-box .txt-date {
+    @apply text-xs text-gray7;
+  }
+
+  .my-grade .grade-group .extra-box {
+    @apply w-full text-sm text-center pc:text-left pc:pl-[88px] pc:absolute top-20;
+  }
+}
+
+/* 마이페이지 - 임직원 할인한도 / 보유혜택 */
+@layer components {
+  .my-sales-benefit-group {
+    @apply flex flex-col pc:flex-row gap-5 pc:gap-6 pc:justify-stretch;
+  }
+
+  .my-sales-benefit-group .my-sales {
+    @apply pc:w-1/2 pc:flex-auto;
+  }
+
+  .my-sales-benefit-group .my-sales .group-box {
+    @apply pt-4 border-t border-gray4 pc:p-5 pc:border;
+  }
+
+  .my-sales-benefit-group .my-benefit {
+    @apply pc:w-1/2 pc:flex-auto;
+  }
+
+  @screen pc {
+    /* 마이페이지 - 임직원 할인한도, 보유혜택에서만 사용 유형 */
+    .my-sales-benefit-group .table-info.responsive tbody {
+      @apply flex items-center;
+    }
+
+    .my-sales-benefit-group .table-info.responsive tr {
+      @apply inline-flex flex-auto items-center justify-center flex-col gap-1;
+    }
+
+    .my-sales-benefit-group .table-info.responsive tr:not(:first-child) {
+      @apply relative border-l border-gray4;
+    }
+
+    .my-sales-benefit-group .table-info.responsive th,
+    .my-sales-benefit-group .table-info.responsive td {
+      @apply block text-center pb-0;
+    }
+
+    .my-sales-benefit-group .my-benefit {
+      @apply flex flex-col;
+    }
+
+    .my-sales-benefit-group .my-benefit .groupbox {
+      @apply flex  flex-auto items-center;
+    }
+  }
+}
+
+/* 마이페이지 - 주문현황 / 활동현황 */
+@layer components {
+  .my-order-activity-group {
+    @apply pc:flex gap-6;
+  }
+
+  .my-order-activity-group .my-order,
+  .my-order-activity-group .my-activity {
+    @apply flex flex-col pc:w-1/2;
+  }
+
+  .my-order-activity-group .my-order .groupbox,
+  .my-order-activity-group .my-activity .groupbox {
+    @apply flex-auto flex items-center;
+  }
+
+  .my-order-activity-group .my-order .groupbox {
+    @apply mb-10 pc:mb-0;
+  }
+
+  .my-order-activity-group .my-activity .groupbox {
+    @apply mb-0;
+  }
+}
+
+@layer components {
+  .divider + .steps-custom {
+    @apply my-5;
+  }
+}
+
+
+/* 등급혜택 */
+@layer components {
+  .box-grade {
+    @apply text-sm;
+  }
+  .box-grade .tab-menu button {
+    @apply relative flex flex-col py-2 items-center text-center;
+  }  
+  .box-grade .tab-menu button[data-state="active"] {
+    @apply border border-gray5 border-b-0;
+  }
+  .box-grade .tab-menu button[data-state="active"]::after {
+    @apply content-[''] w-full h-px absolute left-0 -bottom-px border-b border-white;
+  }
+  .box-grade .tab-menu button[data-state="active"] span {
+    @apply font-bold;
+  }
+  .box-grade .tab-cont {
+    @apply p-4 border border-gray5;
+  }
+
+  .my-benefit .cont-accordion .btn-tit20 {
+    @apply pl-0 py-4 text-sm;
+  }
+}
+
+
+/* 나의 이벤트 현황 */
+@layer components {
+  .my-event-list {
+    @apply mt-5 pc:mt-10
+  }
+  .unit-event a {
+    @apply flex items-start gap-x-2 flex-row flex-wrap
+  }
+  .unit-event + .unit-event {
+    @apply mt-5 pt-5 border-t border-gray3
+  }
+}
+
+/* 나의 상품 qna */
+@layer components {
+  .my-qna-list {
+    @apply border-t border-black
+  }
+  .my-qna-list [data-state="open"] .tit {
+    @apply font-bold
+  }
+}
+
+/* 간편 로그인 재요청 아이콘*/
+.mypage.login .sns-login {
+  @apply flex flex-wrap flex-row text-center w-[335px] gap-7;
+}
+.mypage.login .btn-sns {
+  @apply w-auto text-xs w-[89px];
+}
+.mypage.login .btn-sns button {
+  @apply relative pt-14 pc:pt-16 w-[89px] bg-center text-xs;
+}
+.mypage.login .btn-sns .phone {
+  @apply bg-[url('~/public/images/icons/ico_easy_phone.svg')] bg-no-repeat bg-top;
+}
+.mypage.login .btn-sns .naver {
+  @apply bg-[url('~/public/images/icons/ico_sns01.svg')] bg-no-repeat bg-top;
+}
+.mypage.login .btn-sns .kakao {
+  @apply bg-[url('~/public/images/icons/ico_sns02.svg')] bg-no-repeat bg-top;
+}
+
+.mypage .cont {
+  @apply flex justify-center items-start flex-col w-[335px] mx-auto
+}

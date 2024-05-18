@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .event-attend {
+    @apply w-full h-[340px] mt-3 text-center pc:mt-5 pc:h-[1030px] bg-repeat-x relative bg-left-top;
+    background-size: 100% 100%;
+  }
+
+  .attend-main-text {
+    @apply mt-4 pc:mt-[80px] text-center absolute top-0 left-0 right-0;
+  }
+
+  .attend-container {
+    @apply w-[246px] pc:w-[820px] absolute bottom-px left-1/2 -translate-x-1/2;
+  } 
+
+  .attend-container .calendar-warp {
+    @apply bg-white border-t-4 border-black p-3 pc:p-12 text-center; 
+  }
+
+  .attend-container .calendar-warp .calendar-currentdate {
+    @apply text-xs pc:text-4xl font-bold mb-4 pc:mb-[52px];
+  }
+
+  .attend-container .calendar-warp .calendar-header,
+  .attend-container .calendar-warp .calendar {
+    @apply text-xs pc:text-3xl flex justify-around;
+  }
+
+  .attend-container .calendar-warp .calendar-header {
+    @apply mb-1 pc:mb-3 text-gray7;
+  } 
+
+  .attend-container .calendar-warp .calendar {
+    @apply mb-1 pc:mb-3 last:mb-0;
+  } 
+
+  .attend-container .calendar-warp .calendar-header div,
+  .attend-container .calendar-warp .calendar span {
+    @apply w-[22px] h-[22px] leading-[22px] pc:w-[72px] pc:h-[72px] pc:leading-[72px];
+  }
+
+  .attend-container .calendar-warp .calendar .selected {
+    @apply bg-black text-white rounded-full;
+  }
+  .attend-container .calendar-warp .calendar .current-date {
+    @apply rounded-full border border-black;
+  }
+
+  .background-overlay {
+    @apply absolute left-0 top-0 size-full bg-black opacity-70;
+    /* position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    background-color: #000;
+    opacity: 0.7;     */
+    z-index: 1; 
+  }
+
+  .highlight-layer {
+    @apply absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-white p-[30px] w-[335px];
+    /* position: absolute;
+    left: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 30px;
+    width: 335px; */
+    z-index: 2;
+  }
+}

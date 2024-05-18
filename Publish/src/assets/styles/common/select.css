@@ -1,0 +1,129 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*radix-ui Select 디자인 백업용*/
+@layer utilities {
+  /* select item 기본 스타일 */
+  button[role='combobox'] > span {
+    @apply w-full text-left block;
+  }
+  div[data-radix-popper-content-wrapper] {
+    z-index: 2100 !important; /* antd 모달보다 z-index 가 낮아 적용*/
+  }
+
+  div[data-radix-select-viewport] [role='option'] > span:last-child {
+    @apply w-full
+  }
+  /* E: select item 기본 스타일 */
+}
+
+/* Antd Select 디자인 커스텀*/
+@layer utilities {
+  .select-custom {
+    @apply inline-flex h-10;
+  }
+
+  .select-custom .ant-select {
+    @apply w-full h-full text-sm text-black placeholder:text-gray7 focus:outline-none disabled:pointer-events-none;
+  }
+
+  .select-custom .ant-select .ant-select-selector {
+    @apply border-gray4 w-full h-full rounded-none !shadow-none;
+  }
+
+  .select-custom
+    .ant-select-outlined:not(.ant-select-disabled):not(
+      .ant-select-customize-input
+    ):not(.ant-pagination-size-changer):hover
+    .ant-select-selector,
+  .select-custom
+    .ant-select-outlined:not(.ant-select-disabled):not(
+      .ant-select-customize-input
+    ):not(.ant-pagination-size-changer):focus
+    .ant-select-selector,
+  .select-custom
+    .ant-select-focused.ant-select-outlined:not(.ant-select-disabled):not(
+      .ant-select-customize-input
+    ):not(.ant-pagination-size-changer)
+    .ant-select-selector {
+    @apply border-gray4;
+  }
+
+  .select-custom .ant-select.ant-select-open .ant-select-selector {
+    @apply !border-black transition-none;
+  }
+  .select-custom
+    .ant-select-single.ant-select-show-arrow
+    .ant-select-selection-item,
+  .select-custom
+    .ant-select-single.ant-select-show-arrow
+    .ant-select-selection-placeholder {
+    display: flex;
+    align-items: center;
+    padding-inline-end: 30px;
+  }
+
+  .select-custom .ant-select .ant-select-arrow {
+    @apply content-[''] bg-[url('/images/icons/ico_arrow20.svg')] bg-no-repeat bg-center w-5;
+  }
+
+  .select-custom .ant-select .ant-select-arrow svg {
+    @apply hidden
+  }
+
+  .select-custom .ant-select.line-type .ant-select-selector {
+    @apply border-x-0 border-t-0 p-0;
+  }
+
+  .select-custom .ant-select.line-type .ant-select-arrow {
+    inset-inline-end: 2px;
+  }
+
+  .select-custom .ant-select.error .ant-select-selector {
+    @apply border-error;
+  }
+}
+
+/* Antd Select 드롭다운 디자인 커스텀*/
+.ant-select-dropdown {
+  @apply border border-black p-0 rounded-none
+}
+
+.ant-select-dropdown .ant-select-item {
+  @apply min-h-10 rounded-none items-center leading-[1.4];
+  /* padding-top: 10px 12px; */
+}
+
+.ant-select-dropdown .ant-select-item .ant-select-item-option-content {
+  @apply whitespace-normal
+}
+
+.ant-select-dropdown .ant-select-item.ant-select-item-option-selected {
+  @apply !bg-gray3
+}
+
+.ant-select-dropdown .ant-select-item.ant-select-item-option-selected::after {
+  @apply size-4 bg-[url('/images/icons/ico_check20.svg')] -mt-0.5 content-[''];
+}
+
+/* item에 커스텀 요소가 들어갈 때 컨테이너*/
+.option-inner-box {
+  @apply flex items-center w-full;
+  flex: 1 1 auto;
+}
+
+/* 색상 */
+.select-option-color {
+  @apply size-5 mr-3 inline-block;
+}
+
+/* 기타옵션 설명 */
+.select-option-subLabel {
+  @apply text-gray7 ml-3;
+}
+
+/* 품절여부 */
+.select-option-status {
+  @apply text-secondary1 ml-auto;
+}

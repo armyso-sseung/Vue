@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 가이드 페이지 공통 클래스 */
+@layer utilities {
+  .guide-sub-title {
+    @apply mb-4 text-xl font-bold;
+  }
+
+  .component-container {
+    @apply mb-4 rounded-lg border border-gray-300 bg-white px-8 py-4;
+  }
+
+  .component-container:not(.flex-col) {
+    @apply items-center;
+  }
+
+  .guide-description {
+    @apply mb-4;
+  }
+
+  .guide-description a {
+    @apply text-blue-600 underline;
+  }
+
+  .code-block {
+  }
+  .guide-sidebar-wrap {
+    @apply bg-gray3 shrink-0 w-56 p-4 pt-8 text-black 
+  }
+
+  .guide-sidebar {
+    @apply sticky top-10
+  }
+
+  .side-accordion .group-tit {
+    @apply flex items-center font-bold py-2 border-solid border-b-2 border-black w-full mb-4 text-left  relative
+  }
+  .side-accordion .group-tit::after {
+    @apply content-[''] absolute right-5 pc:right-1 inset-y-1/2 size-4 -translate-y-1/2 bg-[url('~/public/images/icons/ico_arrow16.svg')] bg-center transition-all duration-200;
+  }
+  .side-accordion [data-state='open'] .group-tit::after {
+    @apply rotate-180;
+  }
+}

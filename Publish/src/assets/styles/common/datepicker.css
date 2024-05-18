@@ -1,0 +1,195 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .datapicker-custom {
+    @apply px-4 border-gray4 hover:border-gray4 h-10 rounded-none;
+    box-shadow: none !important;
+  }
+}
+
+/* calandar input */
+.ant-picker-outlined:focus-within,
+.ant-picker-focused {
+  @apply border-gray4;
+}
+.ant-picker .ant-picker-clear,
+.ant-picker-range .ant-picker-clear {
+  @apply hidden;
+}
+.ant-picker-range.ant-picker-focused .ant-picker-active-bar {
+  @apply hidden;
+}
+
+/* calandar header */
+.ant-picker-dropdown .ant-picker-header {
+  @apply p-5 pb-3 border-b-[0px];
+}
+.ant-picker-dropdown .ant-picker-header-view {
+  @apply flex items-center justify-center text-xs font-bold;
+}
+.ant-picker-dropdown .ant-picker-header-view button {
+  @apply pointer-events-none;
+}
+.ant-picker-dropdown .ant-picker-header button {
+  @apply leading-none;
+}
+.ant-picker-header-super-next-btn {
+  @apply hidden;
+}
+.ant-picker-header-super-prev-btn {
+  @apply hidden;
+}
+
+/* calandar body */
+.ant-picker-dropdown {
+  @apply border border-t-2 border-t-black border-gray4;
+}
+.ant-picker-dropdown .ant-picker-panel-container {
+  @apply shadow-none shadow-transparent rounded-none;
+}
+.ant-picker-dropdown .ant-picker-date-panel {
+  @apply w-[335px];
+}
+.ant-picker-dropdown .ant-picker-date-panel .ant-picker-body {
+  @apply px-5 pb-5 pt-[0];
+}
+.ant-picker-dropdown .ant-picker-date-panel .ant-picker-content {
+  @apply w-full;
+}
+.ant-picker-footer {
+  @apply hidden;
+}
+.ant-picker-dropdown .ant-picker-date-panel .ant-picker-content th {
+  @apply h-[35px] text-gray7;
+}
+.ant-picker-dropdown .ant-picker-content td {
+  @apply h-[35px];
+}
+.ant-picker-dropdown .ant-picker-cell {
+  @apply p-0;
+}
+.ant-picker-dropdown .ant-picker-cell::before,
+.ant-picker-dropdown
+  .ant-picker-cell-in-view.ant-picker-cell-today
+  .ant-picker-cell-inner::before {
+  @apply hidden;
+}
+.ant-picker-dropdown .ant-picker-cell .ant-picker-cell-inner {
+  @apply size-[35px] leading-[35px] rounded-full;
+}
+.ant-picker-dropdown
+  .ant-picker-cell-in-view.ant-picker-cell-range-start
+  .ant-picker-cell-inner,
+.ant-picker-dropdown
+  .ant-picker-cell-in-view.ant-picker-cell-range-end
+  .ant-picker-cell-inner {
+  @apply bg-black;
+}
+.ant-picker-dropdown
+  .ant-picker-cell-in-view.ant-picker-cell-selected
+  .ant-picker-cell-inner {
+  @apply size-[35px] leading-[35px] bg-black rounded-full;
+}
+
+
+.ant-picker-dropdown 
+.ant-picker-cell-in-view.ant-picker-cell-selected:not(.ant-picker-cell-disabled) 
+.ant-picker-cell-inner, 
+.ant-picker-dropdown 
+.ant-picker-cell-in-view.ant-picker-cell-range-start:not(.ant-picker-cell-disabled) 
+.ant-picker-cell-inner, 
+.ant-picker-dropdown 
+.ant-picker-cell-in-view.ant-picker-cell-range-end:not(.ant-picker-cell-disabled) 
+.ant-picker-cell-inner {
+  @apply size-[35px] leading-[35px] bg-black rounded-full;
+}
+
+/* calandar range */
+.ant-picker .ant-picker-separator {
+  @apply after:content-['-'] after:inline-block after:text-black;
+}
+.ant-picker-separator .anticon-swap-right {
+  @apply hidden;
+}
+
+.ant-picker .ant-picker-input-placeholder > input,
+.ant-picker:hover .ant-picker-suffix:not(:last-child),
+.ant-picker .ant-picker-input:hover .ant-picker-suffix:not(:last-child),
+.ant-picker-range:hover .ant-picker-suffix:not(:last-child) {
+  @apply opacity-100;
+}
+.ant-picker-dropdown.ant-picker-dropdown-placement-bottomLeft
+  .ant-picker-range-arrow {
+  @apply hidden;
+}
+.ant-picker-dropdown-range {
+  @apply p-0;
+}
+.ant-picker-dropdown
+  .ant-picker-cell-in-view.ant-picker-cell-range-start:not(
+    .ant-picker-cell-range-start-single
+  ):not(.ant-picker-cell-range-end)
+  .ant-picker-cell-inner,
+.ant-picker-dropdown
+  .ant-picker-cell-in-view.ant-picker-cell-range-end:not(
+    .ant-picker-cell-range-end-single
+  ):not(.ant-picker-cell-range-start)
+  .ant-picker-cell-inner {
+  @apply rounded-full;
+}
+.ant-picker-dropdown
+  .ant-picker-date-panel
+  .ant-picker-cell-in-view.ant-picker-cell-range-hover-end
+  .ant-picker-cell-inner {
+  @apply bg-gray4 rounded-full;
+}
+.ant-picker-dropdown
+  .ant-picker-date-panel
+  .ant-picker-cell-in-view.ant-picker-cell-in-range.ant-picker-cell-range-hover-start
+  .ant-picker-cell-inner::after,
+.ant-picker-dropdown
+  .ant-picker-date-panel
+  .ant-picker-cell-in-view.ant-picker-cell-in-range.ant-picker-cell-range-hover-end
+  .ant-picker-cell-inner::after {
+  @apply hidden;
+}
+
+.ant-picker-dropdown
+  .ant-picker-cell-in-view.ant-picker-cell-range-hover-start:not(
+    .ant-picker-cell-in-range
+  ):not(.ant-picker-cell-range-start):not(.ant-picker-cell-range-end)::after,
+.ant-picker-dropdown
+  .ant-picker-cell-in-view.ant-picker-cell-range-hover-end:not(
+    .ant-picker-cell-in-range
+  ):not(.ant-picker-cell-range-start):not(.ant-picker-cell-range-end)::after,
+.ant-picker-dropdown
+  .ant-picker-cell-in-view.ant-picker-cell-range-hover-start.ant-picker-cell-range-start-single::after,
+.ant-picker-dropdown
+  .ant-picker-cell-in-view.ant-picker-cell-range-hover-start.ant-picker-cell-range-start.ant-picker-cell-range-end.ant-picker-cell-range-end-near-hover::after,
+.ant-picker-dropdown
+  .ant-picker-cell-in-view.ant-picker-cell-range-hover-end.ant-picker-cell-range-start.ant-picker-cell-range-end.ant-picker-cell-range-start-near-hover::after,
+.ant-picker-dropdown
+  .ant-picker-cell-in-view.ant-picker-cell-range-hover-end.ant-picker-cell-range-end-single::after,
+.ant-picker-dropdown
+  .ant-picker-cell-in-view.ant-picker-cell-range-hover:not(
+    .ant-picker-cell-in-range
+  )::after {
+  @apply border-none;
+}
+
+/* calandar 월 달력 */
+.ant-picker-dropdown
+  .ant-picker-month-panel
+  .ant-picker-cell
+  .ant-picker-cell-inner {
+  @apply w-[50px] h-[50px] leading-[50px];
+}
+
+.ant-picker-dropdown
+  .ant-picker-month-panel .ant-picker-cell-in-view.ant-picker-cell-selected
+  .ant-picker-cell-inner {
+  @apply w-[50px] h-[50px] leading-[50px];
+}
+

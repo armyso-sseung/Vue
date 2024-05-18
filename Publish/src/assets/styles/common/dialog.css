@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 팝업 */
+@layer components {
+	.ant-modal {
+		@apply 
+	}
+	.ant-modal .ant-modal-close {
+		@apply !w-10
+	}
+	.ant-modal .ant-modal-close:hover, .ant-modal .ant-modal-close:focus {
+		@apply bg-transparent;
+	}
+	.ant-modal.pop-alert {
+		@apply min-h-60 !w-[calc(100%-40px)] !max-w-full pc:!w-96	
+	}
+	.ant-modal.pop-alert .ant-modal-content {
+		@apply p-0 m-0;
+	}
+	.ant-modal.pop-alert .text-box {
+		@apply min-h-16;
+	}
+	.ant-modal.pop-alert .ant-modal-body {
+		@apply pt-16 px-5 pb-7 pc:pb-5;
+	}
+	.ant-modal.pop-layer .ant-modal-content {
+		@apply pt-12 p-0
+	}
+	.ant-modal.pop-layer .ant-modal-title {
+		@apply text-xl text-default;
+	}
+	.ant-modal.pop-layer .ant-modal-body {
+		@apply pt-5 px-5 pb-7 pc:pb-5;
+	}
+}

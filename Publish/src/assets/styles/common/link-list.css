@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .link-list {
+    @apply border-gray3 border-t text-sm mb-10;
+  }
+
+  .link-list li {
+    @apply border-gray3 border-b;
+  }
+
+  .link-list button {
+    @apply flex py-3 w-full text-left items-center justify-between;
+  }
+
+  .link-list button::after {
+    @apply block content-[''] size-5 bg-[url('/images/icons/ico_arrow12.svg')] bg-center bg-no-repeat rotate-[-90deg];
+    background-size: 16px;
+  }
+}

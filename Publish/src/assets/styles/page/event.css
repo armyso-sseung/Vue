@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components  {
+	.slide-new-event .swiper {
+		@apply mo:-mx-5 mo:px-5
+	}
+	.slide-new-event .swiper [class^=swiper-button-] {
+		@apply -mt-10 mo:hidden
+	}
+	/* 설문조사 척도형 */
+	.rating-item {
+		@apply relative;
+	}
+	.rating-item::after {
+	}
+	.rating-item .item {
+		@apply relative items-center text-center;
+	}
+	.rating-item .item:first-child::after {
+		@apply hidden
+	}
+	.rating-item .item::after {
+		@apply content-[''] absolute bottom-2.5 -left-1/2 w-full h-px bg-gray5;
+	}
+	.rating-item .item > span {
+		@apply mt-auto
+	}
+	
+	.rating-item img {
+		@apply z-[1]
+	}
+}

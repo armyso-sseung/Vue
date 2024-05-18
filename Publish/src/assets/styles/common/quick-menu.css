@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 퀵메뉴 */
+@layer components {
+  .quickmenu {
+    @apply border border-gray4 py-4 flex flex-wrap gap-y-3;
+  }
+
+  .quickmenu .quickmenu-item {
+    @apply w-1/4 inline-flex flex-col gap-1 items-center px-1;
+  }
+
+  .quickmenu .menu-button {
+    @apply text-xs;
+  }
+
+  .quickmenu .menu-button:disabled {
+    @apply text-gray6;
+  }
+}
+
+/* 퀵메뉴 설정 */
+@layer components {
+  .quickmenu-settings .quickmenu-title {
+    @apply border-b border-black h-11 text-sm  flex items-center;
+  }
+
+  .quickmenu-settings ul.menu-depth-1 {
+  }
+
+  .quickmenu-settings ul.menu-depth-2 {
+    @apply flex flex-wrap;
+  }
+
+  .quickmenu-settings li.menu-item-depth1 {
+  }
+
+  .quickmenu-settings li.menu-item-depth2 {
+    @apply text-sm bg-gray2 inline-flex w-[40%] flex-auto px-4 items-center h-11 border-b border-gray3 gap-1;
+  }
+
+  .quickmenu-settings .menu-item-depth1-title {
+    @apply flex px-4 items-center w-full h-11 border-b border-gray3 text-sm font-bold bg-white;
+  }
+}
+
+/* 퀵메뉴, 퀵메뉴 설정 공통 */
+@layer components {
+  /* 체크박스 */
+  .menu-checkbox {
+    @apply relative;
+  }
+
+  .menu-checkbox input[type='checkbox'] {
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  .menu-checkbox .menu-checkbox-ico {
+    width: 24px;
+    height: 24px;
+    display: block;
+    background: url('/images/icons/quick_menu_off.svg') no-repeat center;
+  }
+  .menu-checkbox input[type='checkbox']:disabled + .menu-checkbox-ico {
+    background: url('/images/icons/quick_menu_off_disabled.svg') no-repeat
+      center;
+  }
+
+  .menu-checkbox
+    input[type='checkbox']:checked:not(:disabled)
+    + .menu-checkbox-ico {
+    background: url('/images/icons/quick_menu_on.svg') no-repeat center;
+  }
+}

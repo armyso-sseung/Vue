@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .event-result-container {
+  }
+
+  .result-msg {
+    @apply text-center;
+  }
+
+  .result-msg img {
+    @apply mx-auto;
+  }
+
+  .result-msg .msg-title {
+    @apply text-base mb-4;
+  }
+
+  .result-msg .msg-point {
+    @apply text-secondary1 font-bold text-3xl mb-1;
+  }
+
+  .result-msg .msg-description {
+    @apply text-sm;
+  }
+}

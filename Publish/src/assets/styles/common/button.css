@@ -1,0 +1,198 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .btn-area:empty {
+    @apply hidden;
+  }
+  .btn-area.type-full .bg-primary:not(:last-child) {
+    @apply relative;
+  }
+  .btn-area.type-full .bg-primary:not(:last-child)::before {
+    @apply content-[''] absolute right-0 top-1/2 -translate-y-1/2 w-px h-3.5 bg-white;
+  }
+  .btn-toggle {
+    @apply relative block w-11 h-6 rounded-full bg-gray4 cursor-pointer;
+  }
+  .btn-toggle:checked {
+    @apply bg-black
+  }
+  .btn-toggle::after {
+    @apply content-[''] absolute top-2/4 left-1 size-[18px] rounded-full bg-white -translate-y-2/4 transition-all duration-1000;
+  }
+  .btn-toggle:checked::after {
+    @apply right-1 left-auto;
+  }
+  .btn-area.text .btn-toggle {
+    @apply w-[60px];
+  }
+  .btn-area.text .btn-toggle::before {
+    @apply content-['CM'] absolute top-2/4 right-2.5 text-white -translate-y-2/4 text-xs;
+  }
+  .btn-area.text .btn-toggle:checked:before {
+    @apply right-auto left-1.5 content-['INCH'];
+  }
+
+  .btn-area.line button + button::before {
+    @apply content-['|'] mx-2 text-gray4;
+  }
+
+  .btn-arrow-more {
+    @apply justify-center inline-flex items-center gap-1 after:content-[''] after:inline-block after:size-3 after:bg-[url('/images/icons/ico_arrow12.svg')] after:-rotate-90;
+  }
+
+  /* 열기 */
+  .btn-area-open {
+    @apply justify-center inline-flex items-center gap-1 after:content-[''] after:inline-block after:size-4 after:bg-[url('/images/icons/ico_arrow16.svg')] after:bg-center;
+  }
+
+  /* 닫기 */
+  .btn-area-close {
+    @apply justify-center inline-flex items-center gap-1 after:content-[''] after:inline-block after:size-4 after:bg-[url('/images/icons/ico_arrow16.svg')] after:bg-center after:rotate-[180deg];
+  }
+
+  /* X버튼 */
+  .btn-area-x-close {
+    @apply justify-center inline-flex items-center after:content-[''] after:inline-block after:size-4 after:bg-[url('/images/icons/ico_close16.svg')] after:bg-center after:rotate-[180deg];
+  }
+
+  /* 다운로드: 전체받기 */
+  .btn-down {
+    @apply justify-center inline-flex items-center after:content-[''] after:inline-block after:size-5 after:bg-[url('/images/icons/ico_down.svg')];
+  }
+
+  /* 앱 다운로드 (icon white) */
+  .btn-down-white {
+    @apply justify-center inline-flex items-center after:content-[''] after:inline-block after:size-5 after:bg-[url('/images/icons/ico_down_white.svg')];
+  }
+
+  /* 다운로드 - 할인혜택 primary */
+  button.btn-down-primary {
+    @apply justify-center inline-flex items-center text-sm  after:content-[''] after:inline-block after:size-5 after:bg-[url('/images/icons/ico_down_primary.svg')] h-6 text-notice;
+  }
+
+  /* 상품 리뷰 선택 버튼 */
+  .btn-review-box button {
+    @apply bg-gray3;
+  }
+  .btn-review-box .active {
+    @apply border border-black;
+  }
+  .btn-review-box .video {
+    @apply relative before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:bg-[url('~/public/images/icons/ico_review02.svg')] before:size-8 before:bg-center before:bg-no-repeat;
+  }
+  .btn-review-box button.more {
+    @apply relative;
+  }
+  .btn-review-box button.more::after {
+    @apply absolute left-0 top-0 w-full h-full content-['더보기'] text-white text-sm flex items-center justify-center bg-black/30;
+  }
+
+  /* 상품 리뷰 선택 버튼 - 반응형 처리*/
+  .btn-review-box.responsive {
+    @apply grid grid-cols-4 gap-2 pc:gap-6 pc:grid-cols-6;
+  }
+
+  .btn-review-box.responsive.popup{
+    @apply grid grid-cols-4 gap-2;
+  } 
+
+  .btn-review-box.responsive button {
+    @apply relative pc:max-w-[180px] ;
+  }
+  .btn-review-box.responsive button video,
+  .btn-review-box.responsive button img{
+    @apply aspect-square
+  }
+  .btn-review-box.responsive .video {
+    @apply pc:before:size-11;
+  }
+
+  /* 추천 버튼 */
+  button.btn-recomend,
+  .mark-recommend {
+    @apply border-gray4 rounded-xl text-xs border h-5 pl-1.5 pr-3 text-gray7 inline-flex items-center;
+  }
+  button.btn-recomend::before,
+  .mark-recommend::before {
+    @apply mr-0.5 content-[''] block size-5 bg-[url('~/public/images/icons/ico_recommend.svg')] bg-no-repeat bg-center;
+  }
+  button.btn-recomend.active {
+    @apply text-primary;
+  }
+  button.btn-recomend.active::before {
+    @apply bg-[url('~/public/images/icons/ico_recommend_active.svg')];
+  }
+
+  /* 아이콘이 있는 버튼 */
+  button.ico {
+    @apply flex items-center justify-center gap-1;
+  }
+
+  /* 아이콘 + third - 알림함 버튼 */
+  button.btn-noti-on::after {
+    @apply bg-primary content-[''] size-1 rounded-full -mr-2 -translate-y-full;
+  }
+
+  /* 검색 인풋 버튼 */
+  .search-inp .btn-search {
+    @apply text-[0] bg-[url('~/public/images/header/ico_btn_search_mo.svg')] size-5 bg-center bg-auto;
+  }
+
+  /* 열고,닫기 토글 버튼 */
+  .btn-more {
+    @apply inline-block relative pr-4
+  }
+  .btn-more::after {
+    @apply content-[''] absolute right-0 inset-y-2/4 size-3 -translate-y-2/4 bg-[url('~/public/images/icons/ico_arrow12.svg')] bg-center transition-all duration-200 rotate-180;
+  }
+  .btn-more.show::after {
+    @apply rotate-0;
+  }
+
+  /* 상품평 사진 순서변경 버튼 */
+  .btn-turn-move {
+    @apply inline-block relative !pl-7
+  }
+  .btn-turn-move::before {
+    @apply content-[''] absolute left-2 inset-y-2/4 size-4 -translate-y-2/4 bg-[url('~/public/images/icons/ico_btn_move.svg')] bg-center ;
+  }
+  .btn-turn-move.active::before {
+    @apply bg-[url('~/public/images/icons/ico_btn_move_end.svg')];
+  }
+
+  /* 로그아웃 버튼 */
+  .btn-logout {
+    @apply relative;
+  }
+  .btn-logout::before {
+    @apply content-[''] absolute size-5 left-0 top-1/2 -translate-y-1/2 bg-[url('~/public/images/icons/ico_logout.svg')] bg-center;
+  }
+
+  /* MO 하단고정, 팝업 하단 고정일 경우 높이 56px */
+  @screen mo {
+    .ant-modal-body .bottom-fixed button,
+    .bottom-fixed button,
+    .ant-modal-footer button,
+    .ant-drawer-footer button {
+      @apply !min-h-14 !h-14;
+    }
+
+    .bottom-fixed {
+      @apply z-50 fixed left-0 right-0 bottom-0 !gap-0 bg-white;
+      /* 아이폰 노치 영역 */
+      padding:0 0 constant(safe-area-inset-bottom);
+      padding-bottom:env(safe-area-inset-bottom);
+    }
+    .ant-modal-footer .type-border,
+    .bottom-fixed .type-border {
+      @apply !border-t !border-x-0 !border-b-0 !border-gray3
+    }
+    .ant-modal-footer .type-border + .type-border,
+    .bottom-fixed .type-border + .type-border {
+      @apply !border-l;
+    }
+  }
+}
+

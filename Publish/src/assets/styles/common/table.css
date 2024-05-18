@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.table {
+  @apply w-full border-y border-black;
+}
+.table thead tr {
+  @apply border-b border-black;
+}
+.table th {
+  @apply py-3 text-xs font-regular;
+}
+.tabl tbody tr {
+  @apply border-b border-gray3;
+}
+
+.table:not(.text-center) tbody th:not(.text-center) {
+  @apply text-left;
+}
+
+.table td,
+.table tbody th {
+  @apply py-4 px-2 text-xs  align-top border-gray3 border-solid border-b;
+}
+
+.table tbody tr:last-child th,
+table tbody tr:last-child td {
+  @apply border-none;
+}
+
+.search-table {
+  @apply w-full mt-3;
+}
+.search-table td {
+  @apply pb-3 text-xs align-top;
+}
+.search-table tr td:first-child {
+  @apply font-bold;
+}
+
+/* 좌측 헤더형, th td 쌍으로 이루어진 보더 없는 정보 테이블*/
+@layer components {
+  .table-info {
+    @apply text-xs pc:text-sm text-left w-full;
+  }
+
+  .table-info th {
+    @apply font-normal  text-gray7;
+  }
+
+  .table-info th:not(.align-middle) {
+    @apply align-top;
+  }
+
+  .table-info td {
+    @apply align-top  text-black;
+  }
+
+  .table-info tr:not(:last-child) th,
+  .table-info tr:not(:last-child) td {
+    @apply pb-2 pc:pb-3;
+  }
+
+  /* GroupBox - box-gray 회색 박스 내 정보 테이블 */
+  .groupbox.box-gray .table-info th,
+  .groupbox.box-gray .table-info td {
+    @apply text-black;
+  }
+
+  .groupbox.box-gray .table-info tr:not(:last-child) th,
+  .groupbox.box-gray .table-info tr:not(:last-child) td {
+    @apply pb-1 pc:pb-1;
+  }
+}
+
+/*  cols : .table-info 테이블에서 컬럼이 2개 인 경우: 각 tr 은 th, td 한개씩만 있어야 함. */
+@layer components {
+  .table-info.col-2 tbody {
+    @apply flex flex-wrap gap-x-8 gap-y-4;
+  }
+  .table-info.col-2 tr {
+    @apply flex-auto flex-auto relative items-center flex w-[calc(50%-17px)];
+  }
+
+  .table-info.col-2 tr td {
+    @apply flex-auto;
+  }
+
+  .table-info.col-2 tr th,
+  .table-info.col-2 tr td {
+    @apply !pb-0;
+  }
+
+  .table-info.col-2 tr:nth-child(even)::before {
+    @apply bg-gray4 content-[''] pc:content-none w-px h-3 absolute -left-4 top-1/2 -translate-y-1/2;
+  }
+}

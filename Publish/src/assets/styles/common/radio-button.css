@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  /* Radio Button */
+  .radio-button-custom {
+    @apply flex justify-between;
+  }
+
+  /* 버튼 사이즈 base, lg, sm */
+  .radio-button-custom.size-base {
+    @apply h-10
+  }
+
+  .radio-button-custom.size-small {
+    @apply h-8
+  }
+
+  .radio-button-custom.size-lg {
+    @apply h-11
+  }
+
+  .radio-button-custom .radio-item {
+    @apply relative flex-1;
+  }
+
+  .radio-button-custom .radio-item input {
+    @apply size-px absolute left-0 top-0;
+  }
+
+  .radio-button-custom .radio-item label {
+    @apply flex items-center justify-center h-full bg-white border border-gray4 text-sm p-0;
+  }
+
+  .radio-button-custom .radio-item:not(:first-child) {
+    @apply -ml-px
+  }
+
+  .radio-button-custom .radio-item input:checked:not(:disabled) + label {
+    @apply border border-black relative;
+    z-index: 1;
+    text-shadow: 0 0 0.5px #333,
+    
+  }
+
+  .radio-button-custom .radio-item input:disabled + label {
+    @apply pointer-events-none text-gray5;
+  }
+
+
+  /* 정기주문 -  2줄로 표시 */
+  .duration .radio-button-custom,
+  .frequency .radio-button-custom {
+    @apply flex flex-wrap;
+    justify-content: inherit;
+  }
+  .duration .radio-button-custom .radio-item input,
+  .frequency .radio-button-custom .radio-item input {
+    @apply size-px absolute left-0 top-0;
+  }
+  .duration .radio-button-custom .radio-item label, 
+  .frequency .radio-button-custom .radio-item label {
+    @apply flex items-center justify-center h-full bg-white border border-gray4 text-sm p-0;
+  }
+  .duration .radio-button-custom .radio-item:not(:first-child),
+  .frequency .radio-button-custom .radio-item:not(:first-child) {
+    @apply -ml-px
+  }
+  .duration .radio-button-custom .radio-item:nth-of-type(4),
+  .frequency .radio-button-custom .radio-item:nth-of-type(4) {
+    @apply ml-0
+  }
+  .duration .radio-button-custom .radio-item:nth-of-type(4),
+  .frequency .radio-button-custom .radio-item:nth-of-type(4),
+  .duration .radio-button-custom .radio-item:nth-of-type(5),
+  .frequency .radio-button-custom .radio-item:nth-of-type(5) {
+    @apply -mt-px
+  }
+  .duration .radio-button-custom .radio-item input:checked:not(:disabled) + label,
+  .frequency .radio-button-custom .radio-item input:checked:not(:disabled) + label {
+    @apply border border-black relative;
+    z-index: 1;
+    text-shadow: 0 0 0.5px #333,
+  }
+  .duration .radio-button-custom .radio-item input:disabled + label,
+  .frequency .radio-button-custom .radio-item input:disabled + label {
+    @apply pointer-events-none text-gray5;
+  }
+  .duration .radio-button-custom .radio-item,
+  .frequency .radio-button-custom .radio-item {
+    flex: 0 1 calc(33.33%);
+  }
+  .duration .radio-button-custom.size-base,
+  .frequency .radio-button-custom.size-base {
+    @apply h-20;
+  }
+  .day button {
+    @apply border border-gray4;
+  }
+  .day button.selected {
+    @apply border border-black;
+  }
+}

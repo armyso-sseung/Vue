@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* type = "percent" */
+@layer components {
+  .progress.type-percent {
+    @apply flex justify-between items-center mb-3;
+  }
+
+  .progress.type-percent .label-txt-group {
+    @apply mr-3 w-[95px] whitespace-nowrap;
+  }
+  .progress.type-percent .label-txt-group span {
+    @apply block;
+  }
+
+  .progress.type-percent .label-txt-group .title {
+    @apply text-sm;
+  }
+  .progress.type-percent .label-txt-group .result {
+    @apply text-gray7 text-xs;
+  }
+
+  .progress.type-percent .ant-progress-text {
+    @apply text-black text-xs;
+  }
+
+  .progress.type-percent
+    .ant-progress.ant-progress-status-success
+    .ant-progress-text {
+    @apply text-black;
+  }
+}
+
+/* type = "price" */
+@layer components {
+  .progress.type-price .ant-progress {
+    @apply m-0;
+  }
+
+  .progress.type-price + .progress.type-price {
+    @apply mt-6;
+  }
+
+  .progress.type-price .price-txt-group {
+    @apply text-xs text-right mb-1;
+  }
+
+  .progress.type-price .price-txt-group .total {
+    @apply text-gray7;
+  }
+
+  .progress.type-price .price-txt-group .current {
+    @apply text-primary;
+  }
+
+  .progress.type-price .ant-progress-outer {
+    @apply pr-0;
+  }
+  .progress.type-price .ant-progress-text {
+    @apply hidden;
+  }
+}

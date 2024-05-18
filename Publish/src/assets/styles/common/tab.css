@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  /* tab */
+  .tab-menu {
+    -ms-overflow-style: none;
+  }
+  .tab-menu::-webkit-scrollbar {
+    @apply hidden;
+  } 
+  .tab-menu.wrap .tab-menu {
+    @apply flex-row flex-wrap
+  }
+
+  .tab.type01 > .tab-menu button {
+    @apply h-12 pc:h-14 text-base pc:text-lg border-b border-gray4 pc:border-b-2 px-3 whitespace-nowrap;
+  }
+  .tab.type01 > .tab-menu button[data-state='active'] {
+    @apply font-bold border-black;
+  }
+
+  .tab.type02 > .tab-menu {
+    @apply border-l border-t border-gray4;
+  }
+  .tab.type02 > .tab-menu button {
+    @apply relative h-[42px] px-1 pc:px-3 py-3 pc:py-2 border-b border-r border-gray4 text-sm whitespace-nowrap;
+  }
+  .tab.type02 > .tab-menu button::after {
+    @apply content-[''] hidden absolute left-0 top-0 w-full h-full border border-black;
+  }
+  .tab.type02 > .tab-menu button[data-state='active'] {
+    @apply font-bold;
+  }
+  .tab.type02 > .tab-menu button[data-state='active']::after {
+    @apply block;
+  }
+
+  .tab.type03 > .tab-menu {
+    @apply gap-x-8 pc:gap-x-10 w-auto;
+  }
+  .tab.type03 > .tab-menu button {
+    @apply flex-initial text-base whitespace-nowrap;
+  }
+  .tab.type03 > .tab-menu button[data-state='active'] {
+    @apply font-bold;
+  }
+
+
+  /* 상품상세 PC에서 sticky */
+  .tab.goods-sticky > .tab-menu {
+    @apply bg-white sticky top-0 z-20;
+  }
+
+  @screen pc {
+    .tab.goods-sticky .tab-menu {
+      @apply mt-5
+    }
+  }
+
+  /* TabsContent 기본 여백 type01 */
+  .tab.type01 .tab-cont.padding-default {
+    @apply px-5 pt-5  pc:px-0 pc:pt-10;
+  }
+
+  /* TabsContent 기본 여백 type02 */
+  .tab.type02 .tab-cont.padding-default {
+    @apply pt-5 pc:pt-10;
+  }
+
+  /* TabsContent 기본 여백 type03 */
+  .tab.type03 .tab-cont.padding-default {
+    /* 정의필요 */
+  }
+}
