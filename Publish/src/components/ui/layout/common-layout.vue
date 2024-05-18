@@ -36,35 +36,36 @@
   import CommonCodeBlock from '#components/ui/common-code-block.vue'
 
   const language = 'js'
-  const code1 = `import LayoutHeader from "@/components/fo/common/layout-header";
-    import { HeaderContents } from "@/components/fo/common/inner-components/header-contents";
-    import { Container, ContentsWrap } from "@/components/fo/common/contents-wrap";
-    import LayoutFooter from "@/components/fo/common/layout-footer";
+  const code1 = `
+import LayoutHeader from "@/components/fo/common/layout-header";
+import { HeaderContents } from "@/components/fo/common/inner-components/header-contents";
+import { Container, ContentsWrap } from "@/components/fo/common/contents-wrap";
+import LayoutFooter from "@/components/fo/common/layout-footer";
 
-    <LayoutHeader>
-      <HeaderContents title={ "Layout Guide" } type="main" />
-    </LayoutHeader>  
-    <Container>
-      <ContentsWrap>
-        <div className="p-5 bg-gray3 text-center">default(size/spacing) - width 1280</div>
-      </ContentsWrap>
-      <ContentsWrap size="full">
-        <div className="p-5 bg-gray3 text-center">size="full" - width 100%</div>
-      </ContentsWrap>
-      <ContentsWrap size="medium">
-        <div className="p-5 bg-gray3 text-center">size="medium" - width 1140</div>
-      </ContentsWrap>
-      <ContentsWrap size="small">
-        <div className="p-5 bg-gray3 text-center">size="small" - width 455</div>
-      </ContentsWrap>
-      <ContentsWrap spacing="large">
-        <div className="p-5 bg-gray3 text-center">spacing="large"</div>
-      </ContentsWrap>
-      <ContentsWrap spacing="zero">
-        <div className="p-5 bg-gray3 text-center">spacing="zero"</div>
-      </ContentsWrap>
-    </Container>
-    <LayoutFooter />`
+<LayoutHeader>
+  <HeaderContents title={ "Layout Guide" } type="main" />
+</LayoutHeader>
+<Container>
+  <ContentsWrap>
+    <div className="p-5 bg-gray3 text-center">default(size/spacing) - width 1280</div>
+  </ContentsWrap>
+  <ContentsWrap size="full">
+    <div className="p-5 bg-gray3 text-center">size="full" - width 100%</div>
+  </ContentsWrap>
+  <ContentsWrap size="medium">
+    <div className="p-5 bg-gray3 text-center">size="medium" - width 1140</div>
+  </ContentsWrap>
+  <ContentsWrap size="small">
+    <div className="p-5 bg-gray3 text-center">size="small" - width 455</div>
+  </ContentsWrap>
+  <ContentsWrap spacing="large">
+    <div className="p-5 bg-gray3 text-center">spacing="large"</div>
+  </ContentsWrap>
+  <ContentsWrap spacing="zero">
+    <div className="p-5 bg-gray3 text-center">spacing="zero"</div>
+  </ContentsWrap>
+</Container>
+<LayoutFooter />`
 </script>
 
 <style scoped></style>

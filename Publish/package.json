@@ -12,6 +12,7 @@
   "dependencies": {
     "@nuxt/image": "^1.6.0",
     "@pinia/nuxt": "^0.5.1",
+    "@wdns/vue-code-block": "^2.3.2",
     "autoprefixer": "^10.4.19",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",

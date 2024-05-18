@@ -20,7 +20,8 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt',
-    '@ant-design-vue/nuxt'
+    '@ant-design-vue/nuxt',
+    '@/modules/code-block'
   ],
   nitro: {
     esbuild: {
