@@ -444,6 +444,17 @@ interface ContentsProps extends CommonProps {
   sidebar?: 'mypage' | 'customer'
 }
 
+type FileDirectoryItemTpye = {
+  title: string,
+  key: string,
+  children?: FileDirectoryItemTpye[],
+  isLeaf?: boolean
+}
+
+interface FileDirectory extends CommonProps {
+  item: FileDirectoryItemTpye[]
+}
+
 export type {
   ButtonProps,
   ButtonEmits,
@@ -517,5 +528,6 @@ export type {
   AccordionTriggerEmits,
   AccordionContentProps,
   ContainerProps,
-  ContentsProps
+  ContentsProps,
+  FileDirectory
 }
