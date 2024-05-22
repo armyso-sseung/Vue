@@ -114,7 +114,7 @@
     </div>
     <div
       class="star-fill star-common"
-      :style="{ width: `${px(starFill)} !important`, zIndex: 50 }"
+      :style="{ width: `${px(starFill)} !important` }"
     >
       <div>
         <svg

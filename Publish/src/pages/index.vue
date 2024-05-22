@@ -4,13 +4,19 @@
   </div>
   <div class="flex h-[calc(100%-80px)] items-center justify-center space-x-10">
     <NuxtLink
-      class="heading2 block h-[200px] w-[340px] rounded-lg border-2 border-black text-center font-medium leading-[200px]"
+      class="heading2 flex h-[200px] w-[340px] items-center justify-center rounded-lg border-2 border-black text-center font-medium leading-[200px]"
       to="/ui"
       >UI Guide</NuxtLink
     >
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  import { definePageMeta } from '#imports'
+
+  definePageMeta({
+    layout: false
+  })
+</script>
 
 <style scoped></style>

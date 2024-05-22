@@ -28,7 +28,6 @@
           <CommonAccordionContent class-name="!bg-gray3 !p-0 !px-2">
             <ul>
               <CommonLinks href="/ui/button-guide" menu-name="Button" />
-              <CommonLinks href="/ui/calender-guide" menu-name="Calender" />
               <CommonLinks href="/ui/checkbox-guide" menu-name="Checkbox" />
               <CommonLinks href="/ui/counter-guide" menu-name="Counter" />
               <CommonLinks
@@ -57,7 +56,8 @@
           >
           <CommonAccordionContent class-name="!bg-gray3 !p-0 !px-2">
             <ul>
-              <CommonLinks href="/ui/modal-guide" menu-name="Modal, Dialog" />
+              <CommonLinks href="/ui/dialog-guide" menu-name="Dialog" />
+              <CommonLinks href="/ui/modal-guide" menu-name="Modal" />
               <CommonLinks href="/ui/drawer-guide" menu-name="Drawer" />
               <CommonLinks href="/ui/toast-guide" menu-name="Toast" />
               <CommonLinks href="/ui/tool-tip-guide" menu-name="Tool Tip" />

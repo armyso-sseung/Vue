@@ -26,6 +26,7 @@
     clearable?: boolean
     activeOnClick?: boolean
     animate?: boolean
+    ratingType?: 'ceil' | 'floor'
   }
 
   interface RateHandleProps {
@@ -57,7 +58,8 @@
     glowColor: '#fff',
     clearable: false,
     activeOnClick: false,
-    animate: false
+    animate: false,
+    ratingType: 'ceil'
   })
 
   const emits = defineEmits<{
@@ -79,8 +81,13 @@
     } else {
       tRating = rating
     }
+    // 4.6 * 2 => 9.2 / 2 3.6
     const inv = 1.0 / props.increment
-    return Math.min(props.maxRating, Math.ceil(tRating * inv) / inv)
+    const invResult =
+      props.ratingType === 'ceil'
+        ? Math.ceil(tRating * inv)
+        : Math.floor(tRating * inv)
+    return Math.min(props.maxRating, invResult / inv)
   }
 
   const resultRating = computed(() => {

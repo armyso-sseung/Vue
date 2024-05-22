@@ -11,7 +11,11 @@
         <SwiperSlide
           v-for="(item, index) in props.data"
           :key="index"
-          :class="slideStyle"
+          :style="{
+            width: isMobile()
+              ? '162px'
+              : `calc((100% - ${(props.cols - 1) * 24}px) / ${props.cols})`
+          }"
         >
           <NuxtLink :href="'/goods/detail/' + item.goodsNo">
             <ProductItem
@@ -58,8 +62,6 @@
     slidesPerView: 4,
     cols: 4
   })
-
-  const slideStyle = `pc:w-[calc((100% - ${(props.cols - 1) * 24}px) / ${props.cols})] mo:w-[162]`
 </script>
 
 <style scoped></style>

@@ -1,13 +1,14 @@
 <template>
   <a-modal
-    transition-name=""
+    transition-name="none"
     :class="`modal-custom${full ? ' full' : ''}${mobileBodyull ? ' m-body-full' : ''}${mobileBodyull ? ' pc-body-full' : ''}${className ? ' ' + className : ''}`"
     :cancel-text="cancelText"
     :ok-text="okText"
     :open="open"
     centered
-    @on-ok="handleClickOk"
-    @on-cancel="handleClickCancel"
+    :mask-closable="props.maskClosable"
+    @ok="handleClickOk"
+    @cancel="handleClickCancel"
     v-bind="$attrs"
   >
     <template #closeIcon>
@@ -23,7 +24,7 @@
       {{ title }}
     </template>
 
-    <template #footer>
+    <template v-if="footerType === 'custom'" #footer>
       <slot name="footer"></slot>
     </template>
 
@@ -41,10 +42,11 @@
 
   const open = ref(false)
   const emits = defineEmits<CommonModalEmits>()
-  withDefaults(defineProps<CommonModalProps>(), {
+  const props = withDefaults(defineProps<CommonModalProps>(), {
     title: '',
     cancelText: '취소',
-    okText: '확인'
+    okText: '확인',
+    maskClosable: true
   })
 
   const openDialog = () => {

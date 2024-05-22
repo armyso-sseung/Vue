@@ -10,7 +10,18 @@
       <li
         v-for="(item, index) in data"
         :key="`${index}_${item.goodsNo}`"
-        :class="type === 'card' ? cardStyle : 'mb-3 w-full last:mb-0'"
+        :class="
+          type === 'card' ? 'flex flex-none flex-wrap' : 'mb-3 w-full last:mb-0'
+        "
+        :style="
+          type === 'card'
+            ? {
+                width: isMobile()
+                  ? 'calc(50% - 6px)'
+                  : `${(1200 - 24 * (props.cols - 1)) / props.cols}px`
+              }
+            : { width: '100%' }
+        "
       >
         <NuxtLink :href="'/goods/detail/' + item.goodsNo" class="w-full">
           <ProductItem
@@ -35,24 +46,17 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, onMounted, ref } from 'vue'
   import type { ProductListProps } from '~/types/common/product-item-types'
   import { getProductUnit } from '~/utils/product-unit-utils'
   import { GoodsUnitImageWidth } from '~/lib/common/ui/image-variables'
   import { DEVICE } from '~/constants/x2bee-constants'
   import ProductItem from '#components/ui/product-item.vue'
   import type { ProductUnit } from '@/utils/product-unit-utils'
-  import { isMobile } from '#imports'
+  import { isMobile } from '~/utils/device-utils'
 
   const props = withDefaults(defineProps<ProductListProps>(), {
     type: 'card',
     cols: 4
-  })
-
-  const cardStyle = computed(() => {
-    return isMobile()
-      ? `flex flex-none flex-wrap w-[calc(50%-6px)]`
-      : `flex flex-none flex-wrap w-[${(1200 - 24 * (props.cols - 1)) / props.cols}]`
   })
 </script>
 

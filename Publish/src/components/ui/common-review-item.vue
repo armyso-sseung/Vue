@@ -1,5 +1,6 @@
 <script setup lang="ts">
-  import { inject, ref } from 'vue'
+  import { inject, onMounted, onUnmounted, ref } from 'vue'
+  import { useI18n } from 'vue-i18n'
   import dayjs from 'dayjs'
   import CommonButton from '#components/ui/common-button.vue'
   import CommonImage from '#components/ui/common-image.vue'
@@ -7,17 +8,18 @@
   import CommonVideoPlayer from '#components/ui/common-video-player.vue'
   import type {
     ReviewContents,
-    ReviewData,
-    ReviewThumbnails
+    ReviewData
   } from '~/types/goods/goods-review-types'
   import { isMobile as isMobileCheck } from '~/utils/device-utils'
   import { getReviewHlpful } from '~/api/goods/goods-review-api'
   import {
     GOODS_BR_REPLACE,
+    GoodsDialogInjectionKey,
     GoodsReviewThumbnailInjectionKey
   } from '~/constants/goods-constants'
   import CommonRate from '#components/ui/common-rate.vue'
   import type { CommonProps } from '~/types/common/common-props'
+  import { isAuthenticated } from '~/utils/login-check'
 
   interface Props extends CommonProps {
     contents: ReviewData
@@ -25,13 +27,29 @@
       | Array<{ contFilePathNm: string; type: string; revGbCd: string }>
       | ReviewContents[]
     fullContent?: boolean
-    reviewThumbnail: ReviewThumbnails
     isPopupReviewDetail?: boolean
   }
 
-  const reviewModalInject = inject(GoodsReviewThumbnailInjectionKey)
-
+  const { t } = useI18n()
   const props = defineProps<Props>()
+
+  // 모달
+  const reviewModalInject = inject(GoodsReviewThumbnailInjectionKey)
+  const dialogInject = inject(GoodsDialogInjectionKey)
+  const showReviewDeclModal = () => {
+    if (!reviewModalInject?.openDeclarationModal) return
+    if (!isAuthenticated()) {
+      dialogInject?.loginAlert()
+      return
+    }
+
+    if (props.contents?.myReviewYn === 'Y') {
+      dialogInject?.dialogOpen(t('goods-page.reviewDetail.notAllowed'))
+      return
+    }
+
+    reviewModalInject?.openDeclarationModal(props.contents.revNo)
+  }
 
   const formatDate = (date: string, newformat?: string) => {
     // 2022.12.31 형식을 2022/12/31 형식으로 변환해서 dayjs에서 처리하게 함(iOS 사파리 invalid date 오류 방지)
@@ -43,26 +61,33 @@
 
   const isMobile = isMobileCheck()
   const isRecommend = ref(props.contents?.myClickedHelpYn === 'Y')
-  // const { setReviewIndex } = useReviewIndexStore()
-  // const [isOpenReviewDetail, setIsOpenReviewDetail] = useState(false)
-  // const [isOpenReviewDecl, setIsOpenReviewDecl] = useState(false)
-
   const hlpfulCnt = ref(props.contents?.hlpfulCnt || 0)
+
   // 펼치기
   const expanded = ref<boolean>(false)
 
   const contentRef = ref<HTMLDivElement>()
   const isOverflowing = ref<boolean>(false)
-  //
   const isHlpfulEdit = ref(false)
-  // const isMounted = useRef(false)
-  // const isLogin = isAuthenticated()
+  const initClientHeight = ref(0)
+  const resizeFn = () => {
+    if (!contentRef.value) return
+    isOverflowing.value = contentRef.value.scrollHeight > initClientHeight.value
+  }
+
+  onMounted(() => {
+    initClientHeight.value = contentRef.value?.clientHeight || 0
+    resizeFn()
+    window.addEventListener('resize', resizeFn)
+  })
+  onUnmounted(() => {
+    window.removeEventListener('resize', resizeFn)
+  })
+  // 펼치기
+
   // 목록인지 팝업인지 구분
   const isModal = ref(props.isPopupReviewDetail)
-  // const { detailPopupCount, setDetailPopupCount } = useReviewThumbnailStore()
-  // const tReviewDetail = getMessage('goods-page.reviewDetail')
-  // const dialog = useGoodsDialogStore()
-  // const login = useGoodsLogin()
+  const isLogin = () => isAuthenticated()
 
   const toggleRecomend = () => {
     setReviewHlpful(props.contents.revNo)
@@ -74,22 +99,13 @@
   }
 
   async function setReviewHlpful(revNo: string) {
-    // if (
-    //   !login.checkAlert({
-    //     showCloseButton: false,
-    //     pageReturn: true
-    //   })
-    // )
-    //   return
-    console.log('props.contents?.myReviewYn', props.contents?.myReviewYn)
-
+    if (!isLogin()) {
+      dialogInject?.loginAlert()
+      return
+    }
     // 리뷰 작성자 본인여부 확인
     if (props.contents?.myReviewYn === 'Y') {
-      // dialog.open({
-      //   content: tReviewDetail('notAllowed'),
-      //   type: 'confirm',
-      //   ok: tReviewDetail('confirm')
-      // })
+      dialogInject?.dialogOpen(t('goods-page.reviewDetail.notAllowed'))
     } else {
       // 도움돼요 호출
       const res = await getReviewHlpful(revNo)
@@ -116,17 +132,12 @@
         disabled
       />
       <div class="extra-btns">
-        <CommonButton
-          size="fsm"
-          @click="
-            () => reviewModalInject?.openDeclarationModal(props.contents.revNo)
-          "
-        >
-          신고
+        <CommonButton size="fsm" @click="showReviewDeclModal">
+          {{ t('goods-page.reviewDetail.declaration') }}
         </CommonButton>
         <button
           :class="`btn-recomend ${isRecommend ? 'active' : ''}`"
-          title="추천"
+          :title="t('goods-page.reviewDetail.recommend')"
           @click="toggleRecomend"
         >
           {{ hlpfulCnt }}
@@ -158,8 +169,7 @@
         :class="`${item.revGbCd === '30' ? 'video' : ''} ${isMobile && props.images.length > 4 && index === 3 ? 'more' : ''} relative`"
         @click.prevent="
           () => {
-            // showReviewDetailModal(reviewThumbnail, contents?.revNo)
-            console.log('상품평 모달')
+            reviewModalInject?.openDetailModal({ revNo: props.contents.revNo })
           }
         "
       >
@@ -224,9 +234,31 @@
 </template>
 
 <style scoped>
-  @import 'assets/styles/common/review-item.css';
+  .review-item {
+    @apply py-5;
+  }
+
+  .review-item {
+    @apply border-t border-solid border-t-gray4;
+  }
+
+  .review-item .review-controls {
+    @apply mb-2 flex justify-between gap-3;
+  }
+
+  .review-item .review-controls .extra-btns {
+    @apply flex gap-2;
+  }
+
+  .review-item .review-extra-info {
+    @apply flex gap-3 text-xs text-gray7;
+  }
+
   .review-item-scope {
     @apply p-5;
+  }
+  .review-item-scope .mt-1.flex.justify-end {
+    @apply text-sm;
   }
   .review-detail-img-scope {
     @apply p-5;
@@ -234,21 +266,5 @@
 
   .extra-btns button:first-child {
     font-size: 12px;
-  }
-
-  /* 추천버튼 */
-  button.btn-recomend,
-  .mark-recommend {
-    @apply inline-flex h-5 items-center rounded-xl border border-gray4 pl-1.5 pr-3 text-xs text-gray7;
-  }
-  button.btn-recomend::before,
-  .mark-recommend::before {
-    @apply mr-0.5 block size-5 bg-[url('~/public/images/icons/ico_recommend.svg')] bg-center bg-no-repeat content-[''];
-  }
-  button.btn-recomend.active {
-    @apply text-primary;
-  }
-  button.btn-recomend.active::before {
-    @apply bg-[url('~/public/images/icons/ico_recommend_active.svg')];
   }
 </style>

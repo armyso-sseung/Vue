@@ -15,6 +15,7 @@
     showNumber?: boolean
     defaultValue?: number
     starSize?: number
+    ratingType?: 'ceil' | 'floor'
   }
 
   const props = withDefaults(defineProps<Props>(), {
@@ -22,7 +23,8 @@
     showNumber: false,
     className: undefined,
     disabled: false,
-    starSize: 34
+    starSize: 34,
+    ratingType: 'ceil'
   })
   const emits = defineEmits<{
     change: [value: number]
@@ -48,6 +50,7 @@
       :padding="props.size === 'small' ? 2 : 5"
       :increment="props.allowHalf ? 0.5 : 1"
       :star-size="props.starSize"
+      :rating-type="props.ratingType"
       @update:rating="updateRate"
     />
 
