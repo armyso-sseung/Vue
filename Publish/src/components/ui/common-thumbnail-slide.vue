@@ -12,6 +12,7 @@
       :zoom="zoom"
       :thumbs="thumbs"
       :modules="modules"
+      :initial-slide="initialSlide"
       class="main-thumb"
     >
       <SwiperSlide
@@ -32,7 +33,7 @@
         <div
           v-else
           :class="`thumb-container ${zoom ? 'swiper-zoom-container' : ''}`"
-          @click="() => console.log('팝업호출')"
+          @click="(event: Event) => $emit('handleClick', event, idx)"
         >
           <CommonImgMedia
             :src="s3Image({ src: thumbnail.thumbnailUrl })"
@@ -45,7 +46,6 @@
 
     <Swiper
       v-if="showThumbNavMobile"
-      :on-swiper="onClickSwiper"
       direction="vertical"
       :space-between="12"
       :navigation="true"
@@ -53,6 +53,7 @@
       :watch-slides-progress="true"
       :modules="[FreeMode, Navigation, Thumbs]"
       class="nav-thumb block px-5 pc:px-0"
+      @swiper="onClickSwiper"
     >
       <SwiperSlide v-for="(thumb, idx) in thumbnailData" :key="idx">
         <div class="thumb-container">
@@ -67,7 +68,7 @@
             v-else
             :src="s3Image({ src: thumb.thumbnailUrl })"
             :alt="thumb.alt"
-            class="thumb-item"
+            class-name="thumb-item"
           />
         </div>
       </SwiperSlide>
@@ -86,15 +87,20 @@
   } from 'swiper/modules'
   import { ref } from '#imports'
   import s3Image from '~/utils/s3-image'
-  import type { ThumbnailSlideProps } from '~/types/common/component-type'
+  import type {
+    ThumbnailSlideEmits,
+    ThumbnailSlideProps
+  } from '~/types/common/component-type'
   import CommonImgMedia from '#components/ui/common-img-media.vue'
   import CommonVideoPlayer from '#components/ui/common-video-player.vue'
 
+  defineEmits<ThumbnailSlideEmits>()
   const { zoom, showThumbNavMobile } = withDefaults(
     defineProps<ThumbnailSlideProps>(),
     {
       zoom: false,
-      showThumbNavMobile: false
+      showThumbNavMobile: false,
+      initialSlide: 0
     }
   )
 
@@ -102,7 +108,9 @@
   const modules = zoom ? [Pagination, Thumbs, Zoom] : [Pagination, Thumbs]
 
   // 썸네일 스와이퍼가 없을경우 참조오류 발생대응
-  const thumbs: any = showThumbNavMobile ? { swiper: thumbsSwiper } : undefined
+  const thumbs: any = ref(
+    showThumbNavMobile ? { swiper: thumbsSwiper } : undefined
+  )
 
   const onClickSwiper = (thumbnail: any) => {
     thumbsSwiper.value = thumbnail

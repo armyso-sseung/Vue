@@ -239,6 +239,7 @@ interface CommonModalProps extends CommonProps {
   btnFixed?: boolean
   full?: boolean
   mobileBodyull?: boolean
+  footerType?: 'custom' | undefined
   pcBodyull?: boolean
   cancelText?: string
   okText?: string

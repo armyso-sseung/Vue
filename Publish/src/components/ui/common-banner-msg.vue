@@ -15,6 +15,7 @@
     <CommonButton
       v-if="showCloseBtn"
       class-name="top-4.5 absolute right-5 size-5 opacity-70"
+      @click="handleClickEvent"
     >
       <CommonImgMedia src="/images/icons/ico_close20.svg" alt="닫기" fill />
     </CommonButton>
@@ -25,10 +26,15 @@
   import CommonButton from '#components/ui/common-button.vue'
   import { BannerMsgVariants } from '~/lib/common/ui/components/banner-variables'
   import { cn } from '~/utils/common-utils'
-  import type { BannerMsgProps } from '~/types/common/component-type'
+  import type { BannerMsgEmits, BannerMsgProps } from '~/types/common/component-type'
   import CommonImgMedia from '#components/ui/common-img-media.vue'
 
   defineProps<BannerMsgProps>()
+  const emits = defineEmits<BannerMsgEmits>()
+
+  const handleClickEvent = () => {
+    emits('closeEvent')
+  }
 </script>
 
 <style scoped></style>

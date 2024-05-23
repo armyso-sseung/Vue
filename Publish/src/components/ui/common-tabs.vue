@@ -23,6 +23,11 @@
     selectedValue,
     setValue
   })
+
+  defineExpose({
+    selectedValue,
+    setValue
+  })
 </script>
 
 <style scoped></style>

@@ -1,6 +1,6 @@
 <template>
   <a-modal
-    transition-name=""
+    transition-name="none"
     :open="open"
     :class="className"
     :mask-closable="maskClosable"
@@ -12,8 +12,8 @@
       boxShadow: 'none'
     }"
     wrap-class-name="custom-modal"
-    @on-ok="handleClickOk"
-    @on-cancel="handleClickCancel"
+    @ok="handleClickOk"
+    @cancel="handleClickCancel"
     v-bind="$attrs"
   >
     <template #closeIcon>
@@ -32,7 +32,7 @@
     <template #footer>
       <CommonButtonArea
         v-if="footerType === 'custom'"
-        class-name="mt-7"
+        class-name="mt-7 gap-x-0"
         type="column"
         size="full"
       >
@@ -103,7 +103,7 @@
 
   .custom-modal .ant-modal-header {
     text-align: center;
-    margin-bottom: 10px;
+    margin: 0;
   }
 
   .custom-modal .ant-modal-footer {

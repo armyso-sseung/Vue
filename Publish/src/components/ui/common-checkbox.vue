@@ -14,6 +14,7 @@
     "
     :value="value"
     type="checkbox"
+    v-bind="$attrs"
   />
 </template>
 

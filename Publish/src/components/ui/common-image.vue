@@ -1,13 +1,13 @@
 <template>
   <NuxtImg
     :src="srcPath"
-    :class="cn(className, `object-${objectFit}`)"
-    :alt="alt"
-    :fill="fill"
-    :priority="priority || isStaticImage"
-    :width="width"
-    :height="height"
-    :sizes="sizes"
+    :class="cn(className, `object-${props.objectFit}`)"
+    :alt="props.alt"
+    :fit="`${props.fit ? props.fit : props.fill ? 'fill' : 'cover'}`"
+    :priority="props.priority || isStaticImage"
+    :width="props.width"
+    :height="props.height"
+    :sizes="props.sizes"
     :quality="100"
     :unoptimized="isStaticImage"
     :on-error="
@@ -23,30 +23,10 @@
   import { cn } from '~/utils/common-utils'
   import s3Image from '~/utils/s3-image'
   import { ADULT_IMAGE_PATH, NO_IMAGE_PATH } from '~/constants/x2bee-constants'
+  import { computed } from '#imports'
+  import type { CommonImageProps } from '~/types/common/component-type'
 
-  interface ImageProps {
-    src?: string
-    alt?: string
-    width?: number
-    height?: number
-    fill?: boolean
-    className?: string
-    priority?: boolean
-    objectFit?: 'fill' | 'contain' | 'cover' | 'none' | 'scale-down'
-    sizes?: string
-  }
-
-  const {
-    src,
-    alt,
-    width,
-    height,
-    fill,
-    className,
-    priority,
-    objectFit,
-    sizes
-  } = withDefaults(defineProps<ImageProps>(), {
+  const props = withDefaults(defineProps<CommonImageProps>(), {
     src: '',
     alt: '',
     width: 0,
@@ -57,10 +37,14 @@
     objectFit: 'contain'
   })
 
-  const error = ref<boolean>(Boolean(!src))
-  const srcPath = !error.value ? s3Image({ src }) : NO_IMAGE_PATH
+  const error = ref<boolean>(Boolean(!props.src))
+  const srcPath = computed(() => {
+    return !error.value ? s3Image({ src: props.src }) : NO_IMAGE_PATH
+  })
+
   const isStaticImage =
-    Boolean(srcPath === NO_IMAGE_PATH) || Boolean(srcPath === ADULT_IMAGE_PATH)
+    Boolean(srcPath.value === NO_IMAGE_PATH) ||
+    Boolean(srcPath.value === ADULT_IMAGE_PATH)
 </script>
 
 <style scoped></style>

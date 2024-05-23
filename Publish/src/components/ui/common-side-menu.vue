@@ -1,7 +1,7 @@
 <template>
   <div :class="`sideMenu-custom${className ? ' ' + className : ''}`">
     <div class="sideMenu-title">
-      {{ pageTitle ? pageTitle : 'MY PAGE' }}
+      {{ isCustomer ? $t('customerSidebarMenu.menuTitle') : 'MY PAGE' }}
     </div>
     <ul class="menu-depth-1">
       <li
@@ -18,13 +18,14 @@
             class="menu-btn-depth1"
             @click="() => sidebar === 'customer' && navigate()"
           >
-            {{ menu.uprMenuNm }}
+            {{
+              isCustomer
+                ? $t(`customerSidebarMenu.${menu.menuDtlList[0].menuDtlNm}`)
+                : menu.uprMenuNm
+            }}
           </button>
         </NuxtLink>
-        <ul
-          v-if="menu.menuDtlList"
-          class="menu-depth-2"
-        >
+        <ul v-if="!isCustomer && menu.menuDtlList" class="menu-depth-2">
           <li
             v-for="menuDtl in menu.menuDtlList"
             :key="menuDtl.menuDtlId"
@@ -44,33 +45,26 @@
 
 <script setup lang="ts">
   import '@/assets/styles/common/side-menu.css'
-  import type {
-    MenuInfo,
-    SideMenuProps
-  } from '~/types/common/component-type'
-  import { onMounted, ref } from '#imports'
+  import type { SideMenuProps } from '~/types/common/component-type'
+  import { computed, IsEmptyArrayCheck, storeToRefs } from '#imports'
   import { useMenuStore } from '~/stores/common/use-menu-store'
+  import { CUSTOMER_SIDE_MENU } from '~/constants/common-constants'
 
-  const { menuInfo, fetchMenuInfo } = useMenuStore()
-  const { staticMenuInfo, sidebar } = withDefaults(
-    defineProps<SideMenuProps>(),
-    {
-      sidebar: 'customer'
-    }
+  const menuStore = useMenuStore()
+  const { menuInfo } = storeToRefs(menuStore)
+  const { fetchMenuInfo } = menuStore
+  const { sidebar } = withDefaults(defineProps<SideMenuProps>(), {
+    sidebar: 'customer'
+  })
+
+  const isCustomer = computed(() => sidebar === 'customer')
+  const sideMenu = computed(() =>
+    !isCustomer.value ? menuInfo.value : CUSTOMER_SIDE_MENU
   )
 
-  const sideMenu = ref<MenuInfo[]>([])
-
-  onMounted(() => {
-    const setMypageMenu = async () => {
-      menuInfo.length <= 0 && (await fetchMenuInfo())
-      sideMenu.value = menuInfo
-    }
-
-    sidebar === 'mypage'
-      ? setMypageMenu()
-      : (sideMenu.value = staticMenuInfo as MenuInfo[])
-  })
+  if (!isCustomer.value && IsEmptyArrayCheck(menuInfo.value)) {
+    await fetchMenuInfo()
+  }
 </script>
 
 <style scoped></style>
