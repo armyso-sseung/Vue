@@ -1,5 +1,5 @@
 <template>
-  <div :class="cn('code-block relative w-fit max-w-full', className)">
+  <div :class="cn('code-block relative w-full max-w-full', className)">
     <VCodeBlock
       class="m-0 w-full overflow-auto !px-0 !py-[1.25em]"
       :code="value"
