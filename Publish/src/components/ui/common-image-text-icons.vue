@@ -34,8 +34,6 @@
   import CommonImage from '#components/ui/common-image.vue'
 
   defineProps<ImageTextIconProps>()
-
-  // const isMobile = ref(false)
 </script>
 
 <style scoped></style>

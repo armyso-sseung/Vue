@@ -166,6 +166,11 @@ interface ThumbnailSlideProps extends CommonProps {
   thumbnailData: ThumbnailData[]
   zoom?: boolean
   showThumbNavMobile?: boolean
+  initialSlide?: number
+}
+
+type ThumbnailSlideEmits = {
+  handleClick: [event: Event, index: number]
 }
 
 interface VideoPlayerProps extends CommonProps {
@@ -193,6 +198,18 @@ interface ImgMediaProps extends CommonProps {
 }
 
 type ImgMediaEmits = Pick<CommonEmits, 'click'>
+
+interface CommonImageProps extends CommonProps {
+  src?: string
+  alt?: string
+  width?: number
+  height?: number
+  fill?: boolean
+  priority?: boolean
+  fit?: 'fill' | 'contain' | 'cover' | 'inside' | 'outside'
+  objectFit?: 'fill' | 'contain' | 'cover' | 'none' | 'scale-down'
+  sizes?: string
+}
 
 type NuxtImageProps = {
   src?: string
@@ -447,9 +464,9 @@ interface ContentsProps extends CommonProps {
 }
 
 type FileDirectoryItemTpye = {
-  title: string,
-  key: string,
-  children?: FileDirectoryItemTpye[],
+  title: string
+  key: string
+  children?: FileDirectoryItemTpye[]
   isLeaf?: boolean
 }
 
@@ -492,10 +509,12 @@ export type {
   ImageTextIconProps,
   ContentsType,
   ThumbnailSlideProps,
+  ThumbnailSlideEmits,
   VideoPlayerProps,
   LabelProps,
   ImgMediaProps,
   ImgMediaEmits,
+  CommonImageProps,
   NuxtImageProps,
   LikeButtonProps,
   SwitchbtnProps,

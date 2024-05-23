@@ -73,7 +73,6 @@
                 href="/ui/category-list-guide"
                 menu-name="Category List"
               />
-              <CommonLinks href="/ui/swiper-guide" menu-name="Swiper 샘플" />
               <CommonLinks
                 href="/ui/thumbnail-slide-guide"
                 menu-name="Thumbnail Slide"
