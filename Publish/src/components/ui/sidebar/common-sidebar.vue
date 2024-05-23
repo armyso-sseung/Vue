@@ -42,10 +42,6 @@
               <CommonLinks href="/ui/flag-guide" menu-name="Flag" />
               <CommonLinks href="/ui/text-guide" menu-name="Text" />
               <CommonLinks href="/ui/textarea-guide" menu-name="Textarea" />
-              <CommonLinks
-                href="/ui/image-uploader-guide"
-                menu-name="ImageUploade"
-              />
             </ul>
           </CommonAccordionContent>
         </CommonAccordionItem>
