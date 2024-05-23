@@ -14,7 +14,7 @@
     RadioGroupProps
   } from '~/types/common/component-type'
   import { cn } from '~/utils/common-utils'
-  import {provide} from "#imports";
+  import { provide } from '#imports'
 
   defineProps<RadioGroupProps>()
   defineEmits<RadioGroupEmits>()

@@ -36,17 +36,12 @@
               />
               <CommonLinks href="/ui/input-guide" menu-name="TextInput" />
               <CommonLinks href="/ui/radio-guide" menu-name="Radio" />
-              <CommonLinks href="/ui/range-guide" menu-name="Range" />
               <CommonLinks href="/ui/rate-guide" menu-name="Rate" />
               <CommonLinks href="/ui/progress-guide" menu-name="Progress" />
               <CommonLinks href="/ui/select-guide" menu-name="Select" />
               <CommonLinks href="/ui/flag-guide" menu-name="Flag" />
               <CommonLinks href="/ui/text-guide" menu-name="Text" />
               <CommonLinks href="/ui/textarea-guide" menu-name="Textarea" />
-              <CommonLinks
-                href="/ui/image-uploader-guide"
-                menu-name="ImageUploade"
-              />
             </ul>
           </CommonAccordionContent>
         </CommonAccordionItem>
@@ -78,7 +73,6 @@
                 href="/ui/category-list-guide"
                 menu-name="Category List"
               />
-              <CommonLinks href="/ui/swiper-guide" menu-name="Swiper 샘플" />
               <CommonLinks
                 href="/ui/thumbnail-slide-guide"
                 menu-name="Thumbnail Slide"
