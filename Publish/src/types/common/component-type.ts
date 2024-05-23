@@ -1,5 +1,5 @@
 import type { CSSProperties, InputTypeHTMLAttribute, VNode } from 'vue'
-import type { TextAreaProps } from 'ant-design-vue'
+import type { ProgressProps, TextAreaProps } from 'ant-design-vue'
 import type { DefaultOptionType } from 'ant-design-vue/es/vc-select/Select'
 import type { VariantProps } from 'class-variance-authority'
 import type { SelectValue } from 'ant-design-vue/es/select'
@@ -9,6 +9,7 @@ import type { DisplayCategory } from '~/types/display/DisplayTypes'
 import type { SelectTriggerVariants } from '~/lib/common/ui/components/select-variables'
 import type { BannerMsgVariants } from '~/lib/common/ui/components/banner-variables'
 import type { FlagVariants } from '~/lib/common/ui/components/flag-variables'
+import type { ProgressVariants } from '~/lib/common/ui/components/progress-variables'
 
 interface ButtonProps extends CommonProps {
   variant?: VariantProps<typeof ButtonVariants>['variant']
@@ -456,6 +457,15 @@ interface FileDirectory extends CommonProps {
   item: FileDirectoryItemTpye[]
 }
 
+interface CommonProgressProps extends ProgressProps, CommonProps {
+  renderType?: VariantProps<typeof ProgressVariants>['renderType']
+  showLabel?: boolean
+  title?: string
+  result?: string
+  totalPrice?: number
+  currentPrice?: number
+}
+
 export type {
   ButtonProps,
   ButtonEmits,
@@ -530,5 +540,6 @@ export type {
   AccordionContentProps,
   ContainerProps,
   ContentsProps,
-  FileDirectory
+  FileDirectory,
+  CommonProgressProps
 }
