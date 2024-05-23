@@ -36,7 +36,6 @@
               />
               <CommonLinks href="/ui/input-guide" menu-name="TextInput" />
               <CommonLinks href="/ui/radio-guide" menu-name="Radio" />
-              <CommonLinks href="/ui/range-guide" menu-name="Range" />
               <CommonLinks href="/ui/rate-guide" menu-name="Rate" />
               <CommonLinks href="/ui/progress-guide" menu-name="Progress" />
               <CommonLinks href="/ui/select-guide" menu-name="Select" />
