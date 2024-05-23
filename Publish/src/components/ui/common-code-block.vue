@@ -1,7 +1,7 @@
 <template>
   <div :class="cn('code-block relative w-fit max-w-full', className)">
     <VCodeBlock
-      class="m-0 w-full overflow-auto !p-[1.25em]"
+      class="m-0 w-full overflow-auto !px-0 !py-[1.25em]"
       :code="value"
       :lang="language"
       highlightjs
