@@ -133,6 +133,10 @@ interface BannerMsgProps extends CommonProps {
   showCloseBtn?: boolean
 }
 
+type BannerMsgEmits = Pick<CommonEmits, 'click'> & {
+  closeEvent: []
+}
+
 type ContentsType = {
   linkUrlAddr?: string
   movFrmeCd?: string
@@ -506,6 +510,7 @@ export type {
   SwiperSlideProps,
   BannerSlideProps,
   BannerMsgProps,
+  BannerMsgEmits,
   ImageTextIconProps,
   ContentsType,
   ThumbnailSlideProps,
