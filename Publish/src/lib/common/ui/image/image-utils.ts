@@ -18,14 +18,10 @@ const getNuxtImage = ({
     return NO_IMAGE_PATH
   }
 
-  if (/^(http)|(\/images)/i.test(src)) {
-    return src
-  }
-
   const image = useImage()
   const imgSrc = image(s3Image({ src }), {
     alt,
-    width: width / 2,
+    width,
     innerHeight: 0,
     quality: 100,
     priority

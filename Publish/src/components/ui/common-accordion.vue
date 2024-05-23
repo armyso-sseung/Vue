@@ -1,5 +1,5 @@
 <template>
-  <div :class="cn('cont-accordion', className)">
+  <div :class="cn('', className)">
     <slot></slot>
   </div>
 </template>
