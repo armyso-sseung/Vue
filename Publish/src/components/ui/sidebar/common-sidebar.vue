@@ -99,7 +99,6 @@
               <CommonLinks href="/ui/groupbox-guide" menu-name="GroupBox" />
               <CommonLinks href="/ui/link-list-guide" menu-name="Link List" />
               <CommonLinks href="/ui/nodata-guide" menu-name="No Data" />
-              <CommonLinks href="/ui/order-item-guide" menu-name="Order Item" />
               <CommonLinks href="/ui/steps-guide" menu-name="Steps" />
               <CommonLinks href="/ui/tabs-guide" menu-name="Tabs" />
               <CommonLinks href="/ui/table-guide" menu-name="Table" />
@@ -107,7 +106,6 @@
               <CommonLinks href="/ui/timeline-guide" menu-name="TimeLine" />
               <CommonLinks href="/ui/runtine-guide" menu-name="Runtine" />
               <CommonLinks href="/ui/divider-guide" menu-name="Divider" />
-              <CommonLinks href="/ui/side-menu-guide" menu-name="Side Menu" />
             </ul>
           </CommonAccordionContent>
         </CommonAccordionItem>
