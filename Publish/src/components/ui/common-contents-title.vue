@@ -43,10 +43,13 @@
 <template>
   <div :class="cn(TitleAreaVariants({ textCenter, depth }), className)">
     <div class="title-area">
-      <component :is="tag" class="title">
+      <!--   title start  -->
+      <component :is="tag" v-if="title" class="title">
         <component :is="title" v-if="isVNode(title)" />
         <template v-else>{{ title }}</template>
       </component>
+      <slot v-else name="title" class="title"></slot>
+      <!--   title end   -->
       <slot name="extra" class="extra"></slot>
     </div>
 
@@ -58,6 +61,4 @@
   </div>
 </template>
 
-<style scoped>
-  @import '@/assets/styles/common/contents-title.css';
-</style>
+<style scoped></style>

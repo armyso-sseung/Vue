@@ -1,5 +1,5 @@
 <template>
-  <CommonTitle title="Progress" />
+  <CommonTitle title="Progress Guide" />
   <section>
     <h2 className="guide-sub-title">renderType = "percent" (기본값)</h2>
     <CommonCaution class="mb-5">

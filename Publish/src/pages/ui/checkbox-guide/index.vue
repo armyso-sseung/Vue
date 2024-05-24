@@ -1,5 +1,5 @@
 <template>
-  <CommonTitle title="Checkbox" />
+  <CommonTitle title="Checkbox Guide" />
   <section>
     <h2 class="guide-sub-title">mode="single"</h2>
     <div class="component-container flex w-[500px] flex-col gap-3">

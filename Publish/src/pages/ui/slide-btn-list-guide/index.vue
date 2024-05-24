@@ -1,5 +1,5 @@
 <template>
-  <CommonTitle title="SlideBtnList" />
+  <CommonTitle title="SlideBtnList Guide" />
   <p class="mb-5">
     data: 데이터<br />
     active: 선택된 슬라이드
