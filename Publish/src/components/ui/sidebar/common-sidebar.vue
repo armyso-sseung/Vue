@@ -109,61 +109,6 @@
             </ul>
           </CommonAccordionContent>
         </CommonAccordionItem>
-        <CommonAccordionItem value="ui-items-5" class-name="mb-4">
-          <CommonAccordionTrigger class-name="group-tit"
-            >상품</CommonAccordionTrigger
-          >
-          <CommonAccordionContent class-name="!bg-gray3 !p-0 !px-2">
-            <ul>
-              <CommonLinks
-                href="/ui/product-item-guide"
-                menu-name="Product Item"
-              />
-              <CommonLinks
-                href="/ui/product-slide-guide"
-                menu-name="Product Slide"
-              />
-              <CommonLinks
-                href="/ui/product-list-guide"
-                menu-name="Product List"
-              />
-              <CommonLinks
-                href="/ui/review-item-guide"
-                menu-name="Review Item"
-              />
-              <CommonLinks
-                href="/ui/order-item-guide"
-                menu-name="Order Item*"
-              />
-              <CommonLinks
-                href="/ui/simple-order-item-guide"
-                menu-name="Simple Order Item"
-              />
-              <CommonLinks href="/ui/gift-item-guide" menu-name="Gift Item*" />
-              <CommonLinks
-                href="/ui/videoplayer-guide"
-                menu-name="Video Player"
-              />
-            </ul>
-          </CommonAccordionContent>
-        </CommonAccordionItem>
-        <CommonAccordionItem value="ui-items-6" class-name="mb-4">
-          <CommonAccordionTrigger class-name="group-tit"
-            >이벤트</CommonAccordionTrigger
-          >
-          <CommonAccordionContent class-name="!bg-gray3 !p-0 !px-2">
-            <ul>
-              <CommonLinks
-                href="/ui/event-roulette-guide"
-                menu-name="Event Roulette"
-              />
-              <CommonLinks
-                href="/ui/event-result-msg-guide"
-                menu-name="EventResultMsg"
-              />
-            </ul>
-          </CommonAccordionContent>
-        </CommonAccordionItem>
         <CommonAccordionItem value="ui-items-7" class-name="mb-4">
           <CommonAccordionTrigger class-name="group-tit"
             >기타</CommonAccordionTrigger

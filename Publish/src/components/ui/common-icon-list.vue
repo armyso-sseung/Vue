@@ -13,7 +13,6 @@
 
 <script setup lang="ts">
   import { ref, watch } from 'vue'
-  import { useIconStore } from '~/stores/common/use-icon-store'
   import { cn } from '~/utils/common-utils'
   import CommonImage from '#components/ui/common-image.vue'
 

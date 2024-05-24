@@ -13,7 +13,7 @@
       @click="() => handleSlideClick(btn.id)"
     />
   </CommonSlideBtnList>
-  <div class="mt-8 min-w-fit max-w-2xl">
+  <div class="mt-8 min-w-fit">
     <CommonCodeBlock :language="language" :value="section1" />
   </div>
 </template>

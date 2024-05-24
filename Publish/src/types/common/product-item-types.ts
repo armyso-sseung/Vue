@@ -1,8 +1,8 @@
-import type { AssociationGoodsInfo } from '@/types/goods/goods-detail-types'
+import type { AssociationGoodsInfo } from '~/types/goods/goods-detail-types'
 import type { InflowProps } from '~/types/common/common-props'
 import type { GoodsSummary } from '~/types/display/goods-summary'
 import type { ProductUnitDataTypeFunction } from '~/utils/product-unit-utils'
-import type { FilterDataType, SearchDataType } from "~/types/search/search-filter";
+import type { SearchDataType } from '~/types/search/search-filter'
 
 /**
  * ProductItem 컴포넌트 내 공통 상품유닛
