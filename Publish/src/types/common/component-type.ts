@@ -10,6 +10,7 @@ import type { SelectTriggerVariants } from '~/lib/common/ui/components/select-va
 import type { BannerMsgVariants } from '~/lib/common/ui/components/banner-variables'
 import type { FlagVariants } from '~/lib/common/ui/components/flag-variables'
 import type { ProgressVariants } from '~/lib/common/ui/components/progress-variables'
+import type { ErrorTitleVariants } from '~/lib/common/ui/components/error-variables'
 
 interface ButtonProps extends CommonProps {
   variant?: VariantProps<typeof ButtonVariants>['variant']
@@ -487,6 +488,38 @@ interface CommonProgressProps extends ProgressProps, CommonProps {
   currentPrice?: number
 }
 
+type SnsDataType = {
+  snsName: string
+  snsImgUrl: string
+  snsLink: string
+}
+
+interface SnsListProps extends CommonProps {
+  snsData: SnsDataType[]
+}
+
+interface SnsItemProps extends CommonProps {
+  snsData: SnsDataType
+}
+
+interface ErrorTitleProps extends CommonProps {
+  type?: VariantProps<typeof ErrorTitleVariants>['type']
+}
+
+interface ErrorTextProps extends CommonProps {}
+
+interface ErrorButtonProps extends CommonProps {
+  buttonLabel?: string
+  buttonLabelActive?: string
+}
+
+type ErrorButtonEmits = Pick<CommonEmits, 'click'>
+
+interface GiftCardProps extends CommonProps {
+  msg: string
+  hideSender?: boolean
+}
+
 export type {
   ButtonProps,
   ButtonEmits,
@@ -565,5 +598,12 @@ export type {
   ContainerProps,
   ContentsProps,
   FileDirectory,
-  CommonProgressProps
+  CommonProgressProps,
+  SnsListProps,
+  SnsItemProps,
+  ErrorTitleProps,
+  ErrorTextProps,
+  ErrorButtonProps,
+  ErrorButtonEmits,
+  GiftCardProps
 }

@@ -33,15 +33,10 @@
   import type { LikeButtonProps } from '~/types/common/component-type'
   import { isAuthenticated, ref } from '#imports'
   import CommonImage from '#components/ui/common-image.vue'
-  import { WishDeleteApi, WishRegisterApi } from '~/api/member/wish-list'
-  import type { WishListInfo } from '~/types/member/wish-list'
   import { RESPONSE_CODE } from '~/constants/common-constants'
   import type { ErrorType } from '~/types/common/error'
-  import { useGoodsLikeStore } from '~/stores/common/use-goods-like-store'
   import CommonImgMedia from '#components/ui/common-img-media.vue'
   import CommonButton from '#components/ui/common-button.vue'
-  import { useBrandsLikeStore } from '~/stores/common/use-brands-like-store'
-  import { usePlansLikeStore } from '~/stores/display/use-plans-like-store'
 
   const LikeData = {
     product: '10',

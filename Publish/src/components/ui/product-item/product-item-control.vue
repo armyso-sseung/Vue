@@ -17,7 +17,6 @@
 <script setup lang="ts">
   import { ref, watch } from 'vue'
   import CommonLikeButton from '#components/ui/common-like-button.vue'
-  import { useGoodsLikeStore } from '~/stores/common/use-goods-like-store'
 
   const { goodsNo, showLike, likeCallback } = defineProps<{
     goodsNo: string
