@@ -29,6 +29,7 @@
   import CommonCautionTitle from '#components/ui/common-caution-title.vue'
   import CommonCautionContent from '#components/ui/common-caution-content.vue'
   import CommonGiftCard from '#components/ui/common-gift-card.vue'
+  import CommonCodeBlock from '#components/ui/common-code-block.vue'
 
   const language = 'javascript'
   const section1 = `

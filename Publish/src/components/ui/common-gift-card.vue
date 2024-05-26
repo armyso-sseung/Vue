@@ -6,9 +6,12 @@
     >
       기본 이미지
     </div>
-    <div v-if="!hideSender" class="gift-txt-container">
-      <div class="caption1 font-bold">보낸사람</div>
-      <div class="body1 mb-3">최우식 010-****-8652</div>
+    <div class="gift-txt-container">
+      <template v-if="!hideSender">
+        <div class="caption1 font-bold">보낸사람</div>
+        <div class="body1 mb-3">최우식 010-****-8652</div>
+      </template>
+
       <div
         ref="$textElem"
         :class="`body1${isTextRowOverflow ? ' ellipsis-2' : ''} `"
@@ -33,6 +36,7 @@
   import type { GiftCardProps } from '~/types/common/component-type'
   import CommonButton from '#components/ui/common-button.vue'
   import { onMounted, ref } from '#imports'
+  import '@/assets/styles/common/gift-card.css'
 
   defineProps<GiftCardProps>()
 
@@ -46,6 +50,7 @@
   }
 
   const checkOverflow = () => {
+    console.log($textElem.value)
     if ($textElem.value) {
       isTextRowOverflow.value = $textElem.value.clientHeight > 48
     }
