@@ -75,7 +75,7 @@
       <div class="mb-10 flex h-[60px] items-center justify-center bg-gray3">
         하단 컨텐츠
       </div>
-      <CommonContentsTitle title="컨텐츠 타이틀 - depth={3} (14px)" depth="3" />
+      <CommonContentsTitle title="컨텐츠 타이틀 - :depth=3 (14px)" :depth="3" />
       <div class="mb-10 flex h-[60px] items-center justify-center bg-gray3">
         하단 컨텐츠
       </div>
@@ -84,14 +84,26 @@
 
       <CommonContentsTitle
         title="디스크립션이 있는 타이틀"
-        description="디스크립션 첫 번째 줄<br />디스크립션 두 번째 줄"
+        :description="
+          h('div', [
+            h('span', '디스크립션 첫 번째 줄'),
+            h('br'),
+            h('span', '디스크립션 두 번째 줄')
+          ])
+        "
       />
 
       <CommonDivider class-name="mb-5" />
       <CommonContentsTitle
         title="타이틀 우측에  버튼 등 Extra 요소가 있는 경우"
         :depth="2"
-      />
+      >
+        <template #extra>
+          <CommonButton class-name="underline caption1 pc:body1"
+            >더보기</CommonButton
+          >
+        </template>
+      </CommonContentsTitle>
       <div class="flex h-[60px] items-center justify-center bg-gray3">
         하단 컨텐츠
       </div>
@@ -113,7 +125,13 @@
         title="타이틀 뎁스 반응형 처리"
         :depth="2"
         class-name="pc:heading2"
-      />
+      >
+        <template #extra>
+          <CommonButton class-name="underline caption1 pc:body1"
+            >더보기</CommonButton
+          >
+        </template>
+      </CommonContentsTitle>
       <div class="flex h-[60px] items-center justify-center bg-gray3">
         하단 컨텐츠
       </div>
@@ -135,6 +153,8 @@
   import CommonCautionContent from '#components/ui/common-caution-content.vue'
   import CommonContentsTitle from '#components/ui/common-contents-title.vue'
   import CommonDivider from '#components/ui/common-divider.vue'
+  import CommonButton from '#components/ui/common-button.vue'
+  import { h } from '#imports'
 
   const language = 'javascript'
   const section1 = `
@@ -203,14 +223,24 @@ import CommonContentsTitle from '#components/ui/common-contents-title.vue'
 
   <CommonContentsTitle
     title="디스크립션이 있는 타이틀"
-    description="디스크립션 첫 번째 줄<br />디스크립션 두 번째 줄"
+    :description="
+      h('div', [
+        h('span', '디스크립션 첫 번째 줄'),
+        h('br'),
+        h('span', '디스크립션 두 번째 줄')
+      ])
+    "
   />
 
   <CommonDivider class-name="mb-5" />
   <CommonContentsTitle
     title="타이틀 우측에  버튼 등 Extra 요소가 있는 경우"
     :depth="2"
-  />
+  >
+    <template #extra>
+      <CommonButton className="underline caption1 pc:body1">더보기</CommonButton>
+    </template>
+  </CommonContentsTitle>
   <div class="flex h-[60px] items-center justify-center bg-gray3">
     하단 컨텐츠
   </div>
@@ -223,7 +253,11 @@ import CommonContentsTitle from '#components/ui/common-contents-title.vue'
   title="타이틀 뎁스 반응형 처리"
   :depth="2"
   class-name="pc:heading2"
-/>`
+>
+  <template #extra>
+    <CommonButton className="underline caption1 pc:body1">더보기</CommonButton>
+  </template>
+</CommonContentsTitle>`
 </script>
 
 <style scoped></style>

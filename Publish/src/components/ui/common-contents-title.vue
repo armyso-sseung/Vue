@@ -54,7 +54,6 @@
     </div>
 
     <div v-if="description" class="title-description">
-      {{ description }}
       <component :is="description" v-if="isVNode(description)" />
       <template v-else>{{ description }}</template>
     </div>

@@ -109,11 +109,99 @@
   import CommonCautionContent from '#components/ui/common-caution-content.vue'
 
   const language = 'javascript'
-  const section1 = ``
+  const section1 = `
+import CommonAccordion from '#components/ui/common-accordion.vue'
+import CommonAccordionItem from '#components/ui/common-accordion-item.vue'
+import CommonAccordionTrigger from '#components/ui/common-accordion-trigger.vue'
+import CommonAccordionContent from '#components/ui/common-accordion-content.vue'
 
-  const section2 = ``
+<CommonAccordion type="single" class-name="cont-accordion">
+  <CommonAccordionItem value="item-1" class-name="item">
+    <CommonAccordionTrigger class-name="btn-tit"
+      >item 1</CommonAccordionTrigger
+    >
+    <CommonAccordionContent
+      >This is content for item 1</CommonAccordionContent
+    >
+  </CommonAccordionItem>
+  <CommonAccordionItem value="item-2" class-name="item">
+    <CommonAccordionTrigger class-name="btn-tit"
+      >item 2</CommonAccordionTrigger
+    >
+    <CommonAccordionContent
+      >This is content for item 2</CommonAccordionContent
+    >
+  </CommonAccordionItem>
+  <CommonAccordionItem value="item-3" class-name="item">
+    <CommonAccordionTrigger class-name="btn-tit"
+      >item 3</CommonAccordionTrigger
+    >
+    <CommonAccordionContent
+      >This is content for item 3</CommonAccordionContent
+    >
+  </CommonAccordionItem>
+</CommonAccordion>`
 
-  const section3 = ``
+  const section2 = `
+import CommonAccordion from '#components/ui/common-accordion.vue'
+import CommonAccordionItem from '#components/ui/common-accordion-item.vue'
+import CommonAccordionTrigger from '#components/ui/common-accordion-trigger.vue'
+import CommonAccordionContent from '#components/ui/common-accordion-content.vue'
+
+<CommonAccordion type="multiple" class-name="cont-accordion">
+  <CommonAccordionItem value="item-1" class-name="item">
+    <CommonAccordionTrigger class-name="btn-tit"
+      >item 1</CommonAccordionTrigger
+    >
+    <CommonAccordionContent
+      >This is content for item 1</CommonAccordionContent
+    >
+  </CommonAccordionItem>
+  <CommonAccordionItem value="item-2" class-name="item">
+    <CommonAccordionTrigger class-name="btn-tit"
+      >item 2</CommonAccordionTrigger
+    >
+    <CommonAccordionContent
+      >This is content for item 2</CommonAccordionContent
+    >
+  </CommonAccordionItem>
+  <CommonAccordionItem value="item-3" class-name="item">
+    <CommonAccordionTrigger class-name="btn-tit"
+      >item 3</CommonAccordionTrigger
+    >
+    <CommonAccordionContent
+      >This is content for item 3</CommonAccordionContent
+    >
+  </CommonAccordionItem>
+</CommonAccordion>`
+
+  const section3 = `
+import CommonAccordion from '#components/ui/common-accordion.vue'
+import CommonAccordionItem from '#components/ui/common-accordion-item.vue'
+import CommonAccordionTrigger from '#components/ui/common-accordion-trigger.vue'
+import CommonAccordionContent from '#components/ui/common-accordion-content.vue'
+import CommonCautionContent from '#components/ui/common-caution-content.vue'
+
+<CommonAccordion type="multiple" class-name="info-accordion">
+  <CommonAccordionItem value="item-1">
+    <CommonAccordionTrigger class-name="info-tit"
+      >타이틀1</CommonAccordionTrigger
+    >
+    <CommonAccordionContent class-name="info-content">
+      <CommonCautionContent>디스크립션1</CommonCautionContent>
+      <CommonCautionContent>디스크립션2</CommonCautionContent>
+    </CommonAccordionContent>
+  </CommonAccordionItem>
+  <CommonAccordionItem value="item-2">
+    <CommonAccordionTrigger class-name="info-tit"
+      >타이틀2</CommonAccordionTrigger
+    >
+    <CommonAccordionContent class-name="info-content">
+      <CommonCautionContent>디스크립션1</CommonCautionContent>
+      <CommonCautionContent>디스크립션2</CommonCautionContent>
+    </CommonAccordionContent>
+  </CommonAccordionItem>
+</CommonAccordion>`
 </script>
 
 <style scoped></style>
