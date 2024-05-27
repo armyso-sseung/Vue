@@ -19,11 +19,13 @@
       : handleTypeMultiple(itemValue, isIncluded)
   }
 
+  // Single Type : 하나만 열 수 있음.
   const handleTypeSingle = (itemValue: string, isIncluded: boolean) => {
     if (isIncluded) return
     selectedValues.value = [itemValue]
   }
 
+  // Multiple Type : 여러개 열 수 있음.
   const handleTypeMultiple = (itemValue: string, isIncluded: boolean) => {
     if (!isIncluded) {
       selectedValues.value.push(itemValue)
@@ -34,7 +36,18 @@
     }
   }
 
+  // Accordion Reset
+  const handleResetAccordion = () => {
+    selectedValues.value = []
+  }
+
   provide('common-accordion', {
+    selectedValues,
+    setValue
+  })
+
+  defineExpose({
+    handleResetAccordion,
     selectedValues,
     setValue
   })
